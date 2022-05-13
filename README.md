@@ -26,7 +26,7 @@ The core components only provide the basic GNOME desktop, along with some things
  - Add an applications menu (this one is built-in)
 
  ## Building and Installing
- This is a work in progress, but the general idea is that these will all be on slackbuilds.org one day. Once that is the case, you can use 'sbopkg' to build the core components, and additional components. There is also a "queue file" for sbopkg that you can use to automatically build the core and additional components, in the correct order. See the "gnome-build-order.sqf" file provided in this repo.
+ This is a work in progress, but the general idea is that these will all be on slackbuilds.org one day. Once that is the case, you can use 'sbopkg' to build the core components, and additional components. There is also a "queue file" for sbopkg that you can use to automatically build the core and additional components, in the correct order. See the "gnome_build_order.sqf" file provided in this repo.
 
  NOTE ABOUT USERS/GROUPS (colord, avahi)
 
