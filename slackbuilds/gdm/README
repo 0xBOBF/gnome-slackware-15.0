@@ -1,0 +1,8 @@
+GDM is a system service that is responsible for providing graphical logins and
+managing local and remote display.
+
+Note that Slackware comes with the 'gdm' group and user already configured.
+
+Requirements:
+- gnome-session
+- gnome-shell
