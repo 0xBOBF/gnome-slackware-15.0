@@ -7,9 +7,9 @@ The slackbuilds in this project must be able to build on slackware 15.0, with no
 ## The Core Components
 Modern desktop environments like GNOME and KDE have many components, making a comprehensive build difficult to manage. This project takes the approach of building the "core components" required for GNOME, and then the user can add on components from there to build the desired system.
 
-At the core on GNOME is the "gnome-shell" graphical environment, along with the "gnome-session" session manager, and the "gdm" display manager, used for login and screen locking functionality. With these three packages installed, gnome will be functional and applications from Slackware can be used for everything else.
+At the core of GNOME is the "gnome-shell" graphical environment, along with the "gnome-session" session manager, and the "gdm" display manager, used for login and screen locking functionality. With these three packages installed, gnome will be functional and applications from Slackware can be used for everything else.
 
-Note that gnome-shell has a naumber of dependencies in the form of programs and libraries, used to give it functionality. Key dependencies that are used to build gnome-shell include evolution-data-server, gnome-online-accouts, gnome-control-center, gnome-settings-daemon, and the mutter window manager/wayland compositor. 
+Note that gnome-shell has a number of dependencies in the form of programs and libraries, used to give it functionality. Key dependencies that are used to build gnome-shell include evolution-data-server, gnome-online-accouts, gnome-control-center, gnome-settings-daemon, and the mutter window manager/wayland compositor. Slackbuilds for required dependencies that are not already on slackbuilds.org are also in this repo.
 
 ## Additional Components
 The core components only provide the basic GNOME desktop, along with some things like a panel, application menu, and control center to name a few. Several additional packages are provided to allow for easier customization of the GNOME desktop, mainly focused on enabling extensions from extensions.gnome.org, and adding a few other basic programs.
