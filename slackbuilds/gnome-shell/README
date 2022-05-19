@@ -1,8 +1,8 @@
-GNOME Shell provides core user interface functions for the GNOME desktop,
-like switching to windows and launching applications. GNOME Shell takes
-advantage of the capabilities of modern graphics hardware and introduces
-innovative user interface concepts to provide a visually attractive and
-easy to use experience.
+GNOME Shell provides core user interface functions for the GNOME 
+desktop, like switching to windows and launching applications. GNOME
+Shell takes advantage of the capabilities of modern graphics hardware
+and introduces innovative user interface concepts to provide a visually
+attractive and easy to use experience.
  
 Required Dependencies:
 - evolution-data-server

@@ -1,4 +1,5 @@
-This is the project of the Files app, a file browser for GNOME, internally known by its historical name nautilus.
+This is the project of the Files app, a file browser for GNOME,
+internally known by its historical name nautilus.
 
 Dependencies:
 - bubblewrap
@@ -9,5 +10,7 @@ Dependencies:
 - libportal
 - tracker*
 
-* Documentation on Nautilus recommends building tracker against tracker-miners which is currently not in the slackbuilds.org repo. 
-  However, nautilus still builds and functions without a tracker-miners package on the system.
+* Documentation on Nautilus recommends building tracker against
+  tracker-miners which is currently not in the slackbuilds.org repo. 
+  However, nautilus still builds and functions without a 
+  tracker-miners package on the system.

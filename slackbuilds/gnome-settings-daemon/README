@@ -1,4 +1,5 @@
-The GNOME Settings Daemon is responsible for setting various parameters of a GNOME Session and the applications that run under it. 
+The GNOME Settings Daemon is responsible for setting various parameters
+of a GNOME Session and the applications that run under it.
 
 Required Dependencies:
 - colord 
