@@ -8,5 +8,3 @@ MD5SUM_x86_64=""
 REQUIRES="colord-gtk gnome-bluetooth gnome-online-accounts gnome-settings-daemon gsound libhandy"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
-
- 

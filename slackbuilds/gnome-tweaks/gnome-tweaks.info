@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-tweaks/40/gnome-tweaks-40.0.t
 MD5SUM="81b5883a6f0046f1b63cc998829d83e4"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="gnome-desktop gnome-shell libhandy mutter"
+REQUIRES=""
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
