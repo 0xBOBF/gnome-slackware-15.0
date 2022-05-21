@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-shell-extensions/40/gnome-she
 MD5SUM="9f8ad8e7f08d99470af3c88ce7f29225"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES=""
+REQUIRES="gnome-menus"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
