@@ -30,7 +30,7 @@ BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
-# Allow runtime dep 'cheese' to be enabled with a variable:
+# Enable building with optional dep 'cheese' with a variable:
 CHEESE=${CHEESE:-false}
 
 if [ -z "$ARCH" ]; then
