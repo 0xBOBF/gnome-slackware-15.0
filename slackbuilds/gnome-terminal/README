@@ -9,3 +9,7 @@ terminals.
 GNOME Terminal accepts all of the escape sequences that the VT102 and
 VT220 terminals use for functions such as positioning the cursor and 
 clearing the screen.
+
+Required Dependencies:
+- gnome-shell
+- nautilus

@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
       |-----handy-ruler------------------------------------------------------|
-mutter: mutter (Window Manager and Display Server for GNOME)
+mutter: mutter (GNOME Display Server and Window Manager)
 mutter:
 mutter: Mutter is a Wayland display server and X11 window manager and 
 mutter: compositor library.
-mutter: 
-mutter: 
-mutter: 
 mutter:
-mutter: 
+mutter:
+mutter:
+mutter:
+mutter:
 mutter: https://wiki.gnome.org/Projects/Mutter/
 mutter:

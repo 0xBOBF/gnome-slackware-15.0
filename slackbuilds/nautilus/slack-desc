@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
         |-----handy-ruler------------------------------------------------------|
-nautilus: Nautilus
+nautilus: nautilus (GNOME Files Application)
 nautilus:
 nautilus: Nautilus is a highly-polished content manager for GNOME.  Nautilus
 nautilus: integrates access to files, applications, media, Internet-based
@@ -14,4 +14,6 @@ nautilus: resources and the Web, delivering a dynamic and rich user experience.
 nautilus: Nautilus, developed by Eazel, Inc., is a free software project
 nautilus: developed under the GNU General Public License and is a core
 nautilus: component of the GNOME desktop project.
+nautilus:
+nautilus: https://gitlab.gnome.org/GNOME/nautilus
 nautilus:

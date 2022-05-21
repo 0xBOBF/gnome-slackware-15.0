@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                       |-----handy-ruler------------------------------------------------------|
-gnome-shell-extensions: GNOME Shell Extensions
-gnome-shell-extensions: 
+gnome-shell-extensions: gnome-shell-extensions (GNOME Shell Extensions)
+gnome-shell-extensions:
 gnome-shell-extensions: This package contains a collection of extensions providing additional
 gnome-shell-extensions: and optional functionality to GNOME Shell.
-gnome-shell-extensions: 
-gnome-shell-extensions: 
-gnome-shell-extensions: 
-gnome-shell-extensions: 
-gnome-shell-extensions: 
+gnome-shell-extensions:
+gnome-shell-extensions:
+gnome-shell-extensions:
+gnome-shell-extensions:
+gnome-shell-extensions:
 gnome-shell-extensions: https://gitlab.gnome.org/GNOME/gnome-shell-extensions
-gnome-shell-extensions: 
+gnome-shell-extensions:

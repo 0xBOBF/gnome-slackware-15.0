@@ -22,4 +22,3 @@ mutter is only intended for debugging purposes.
 
 Required Dependencies:
 - gnome-settings-daemon
-- zenity

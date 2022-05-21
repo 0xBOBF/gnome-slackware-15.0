@@ -5,9 +5,8 @@ and introduces innovative user interface concepts to provide a visually
 attractive and easy to use experience.
  
 Required Dependencies:
-- evolution-data-server
-- gnome-autoar 
+- evolution-data-server 
+- gnome-autoar
 - gnome-bluetooth
-- gnome-control-center 
-- gnome-menus
+- gnome-control-center
 - mutter

@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
            |-----handy-ruler------------------------------------------------------|
-gnome-shell: GNOME Shell
+gnome-shell: gnome-shell (GNOME Shell)
 gnome-shell:
 gnome-shell: GNOME Shell provides core interface functions like switching windows,
 gnome-shell: launching applications or see your notifications. It takes advantage
@@ -14,6 +14,6 @@ gnome-shell: of the capabilities of modern graphics hardware and introduces
 gnome-shell: innovative user interface concepts to provide a delightful and easy
 gnome-shell: to use experience. GNOME Shell is the defining technology of the
 gnome-shell: GNOME user experience.
-gnome-shell: 
+gnome-shell:
 gnome-shell: https://gitlab.gnome.org/GNOME/gnome-shell/
-gnome-shell: 
+gnome-shell:

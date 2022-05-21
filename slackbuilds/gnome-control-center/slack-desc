@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                     |-----handy-ruler------------------------------------------------------|
-gnome-control-center: GNOME Control Center (GNOME Settings Manager)
-gnome-control-center: 
+gnome-control-center: gnome-control-center (GNOME Control Center)
+gnome-control-center:
 gnome-control-center: The GNOME settings manager is GNOME's main interface for configuration
 gnome-control-center: of various aspects of your desktop.
-gnome-control-center: 
-gnome-control-center: 
-gnome-control-center: 
-gnome-control-center: 
-gnome-control-center: 
+gnome-control-center:
+gnome-control-center:
+gnome-control-center:
+gnome-control-center:
+gnome-control-center:
 gnome-control-center: https://gitlab.gnome.org/GNOME/gnome-control-center
-gnome-control-center: 
+gnome-control-center:
