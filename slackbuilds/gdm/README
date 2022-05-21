@@ -4,6 +4,17 @@ logins and managing local and remote display.
 Note that Slackware comes with the 'gdm' group and user already 
 configured.
 
-Requirements:
+Required Dependencies:
 - gnome-session
 - gnome-shell
+
+Note that 'gdm' will build without 'gnome-session' and 'gnome-shell'
+installed, but 'gdm' will be unusable without them.
+
+A note on PAM:
+GDM can build PAM configs for linux distros like redhat, lfs, and arch.
+However, none of these configs are suitable for Slackware's PAM 
+configuration. Therefore this SlackBuild provides custom PAM configs 
+for GDM that function properly with Slackware. I didn't include 
+'gdm-fingerprint' or 'gdm-smartcard', since I don't have the hardware 
+needed to properly test functionality. 
