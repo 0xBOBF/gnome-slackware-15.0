@@ -92,6 +92,7 @@ cd build
     --prefix=/usr \
     --sysconfdir=/etc \
     -Dstrip=true \
+    -Ddocbook=false \
     -Dsystemd=false \
     -Delogind=true \
     -Dsystemd_journal=false
