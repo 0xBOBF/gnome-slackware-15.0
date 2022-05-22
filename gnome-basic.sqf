@@ -35,4 +35,3 @@ jq
 p7zip
 chrome-gnome-shell
 gnome-backgrounds
-gnome-terminal
