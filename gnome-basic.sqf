@@ -29,6 +29,7 @@ gnome-tweaks
 libportal
 tracker
 nautilus
+gnome-menus
 gnome-shell-extensions
 jq
 p7zip

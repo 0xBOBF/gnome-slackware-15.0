@@ -21,9 +21,9 @@ The core components only provide the basic GNOME desktop, along with some things
  - chrome-gnome-shell (browser integration for extensions.gnome.org)
 
  Note that "chrome-gnome-shell" is the "system side" of the browser integration for gnome extensions. You will also have to install the browser extension itself to enable switching extensions directly from extensions.gnome.org. If you omit browser integration, you can still manually download and install extensions. The extensions system is useful for configuring the GNOME desktop. Some useful extensions include:
- - libappindicator (provides a system tray for things like hplip, bluetooth, discord, etc.)
+ - libappindicator or Tray Icons Reloaded (provides a system tray for things like hplip, bluetooth, discord, etc.)
  - Hide/Remove the activities button
- - Add an applications menu (this one is built-in)
+ - Add an applications menu (built in or other available)
 
  ## Building and Installing
  This is a work in progress, but the general idea is that these will all be on slackbuilds.org one day. Once that is the case, you can use 'sbopkg' to build the core components, and additional components. There is also a "queue file" for sbopkg that you can use to automatically build the core and additional components, in the correct order. See the "gnome-basic.sqf" file provided in this repo.
