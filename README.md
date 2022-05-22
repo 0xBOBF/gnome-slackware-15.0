@@ -1,6 +1,6 @@
 # Gnome for Slackware 15.0
 ## Overview
-The goal of this project is to provide the GNOME desktop in "SlackBuild" format for usage on Slackware 15.0. The idea is to use any existing packages from slackware or slackbuilds.org, and add what is required to complete the GNOME desktop.
+This project provides the GNOME desktop in "SlackBuild" format for usage on Slackware 15.0. The goal is to use any existing packages from slackware or slackbuilds.org, and add only what is required to complete the GNOME desktop.
 
 The slackbuilds in this project must be able to build on slackware 15.0, with no custom upgrades to base Slackware packages. When Slackware 15.0 released, GNOME 41 was the latest version. The builds here will generally be from that same release, although it may vary depending on pre-existing package versions in Slackware and slackbuilds.org.
 
@@ -26,9 +26,21 @@ The core components only provide the basic GNOME desktop, along with some things
  - Add an applications menu (this one is built-in)
 
  ## Building and Installing
- This is a work in progress, but the general idea is that these will all be on slackbuilds.org one day. Once that is the case, you can use 'sbopkg' to build the core components, and additional components. There is also a "queue file" for sbopkg that you can use to automatically build the core and additional components, in the correct order. See the "gnome_build_order.sqf" file provided in this repo.
+ This is a work in progress, but the general idea is that these will all be on slackbuilds.org one day. Once that is the case, you can use 'sbopkg' to build the core components, and additional components. There is also a "queue file" for sbopkg that you can use to automatically build the core and additional components, in the correct order. See the "gnome-basic.sqf" file provided in this repo.
 
- NOTE ABOUT USERS/GROUPS (colord, avahi)
+## Preparing the Build
+The gnome control center and settings daemons use 'colord' as a dependency, which needs its own user and group. Make sure to create this user and group before starting the build process, or colord will fail to build.
+```bash
+ groupadd -g 303 colord
+ useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
+```
 
- NOTE ABOUT BUILD ENVIRONMENT VARIABLES (INTROSPECTION, VAPI, VALA, WEBKITGTK)
- 
+### Build Variables
+NOTE: The current build queue can be built and used without these variables. They will become necessary for some gnome applications that will eventually be added. For now, just skip this.
+
+In the future this queue build will be built out to include more gnome applications. When that happens, some of the packages built from this queue will need some options switched on. You can set these in the environment before starting the build, so they are picked up by the builds that use them (evolution-data-server and gnome-online-accounts and their deps).
+```bash
+export INTROSPECTION=yes
+export VAPI=yes
+export VALA=yes
+```
