@@ -18,3 +18,21 @@ configuration. Therefore this SlackBuild provides custom PAM configs
 for GDM that function properly with Slackware. I didn't include 
 'gdm-fingerprint' or 'gdm-smartcard', since I don't have the hardware 
 needed to properly test functionality. 
+
+A note on Slackware:
+Slackware has it's /etc/rc.d/rc.4 script starting gdm with an invalid
+command line option, which will cause gdm to fail starting in runlevel
+4. To use gdm, you will need to edit /etc/rc.d/rc.4 to remove the 
+'-nodaemon' option from being passed to gdm. After editing, the gdm 
+lines should look like this:
+
+if [ -x /usr/bin/gdm ]; then
+  exec /usr/bin/gdm
+fi
+
+# Someone thought that gdm looked prettier in /usr/sbin,
+# so look there, too:
+if [ -x /usr/sbin/gdm ]; then
+  exec /usr/sbin/gdm
+fi
+
