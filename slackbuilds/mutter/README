@@ -19,6 +19,3 @@ Mutter is used by, for example, GNOME Shell, the GNOME core user
 interface, and by Gala, elementary OS's window manager. It can also be
 run standalone, using the command "mutter", but just running plain
 mutter is only intended for debugging purposes.
-
-Required Dependencies:
-- gnome-settings-daemon
