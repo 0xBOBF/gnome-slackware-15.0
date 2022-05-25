@@ -1,14 +1,6 @@
 GNOME Settings is GNOME's main interface for configuration of various
 aspects of your desktop.
 
-Required Dependencies:
-- colord-gtk
-- gnome-bluetooth
-- gnome-online-accounts
-- gnome-settings-daemon
-- gsound
-- libhandy
-
 Optional Dependencies:
 - gnome-color-manager
 - cheese
