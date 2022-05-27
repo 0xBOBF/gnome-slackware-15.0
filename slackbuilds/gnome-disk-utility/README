@@ -1,0 +1,4 @@
+gnome-disk-utility provides libraries and applications for dealing with
+storage devices, including GNOME Disks, gnome-disk-image-mounter and 
+gsd-disk-utility-notify are libraries and applications for dealing with
+storage devices.

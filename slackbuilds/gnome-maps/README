@@ -1,0 +1,16 @@
+Maps gives you quick access to maps all across the world. We use the
+collaborative OpenStreetMap database, enabling our users to make 
+smaller changes to places and points-of-interests.
+
+Note on Dependencies:
+gnome-maps will fail to build if its GNOME dependencies are not built
+with introspection and vala bindings. These options have been disabled
+by default by the maintainer of these builds on slackbuilds.org, so you
+will need to ensure you set the following variables when building all 
+the deps of gnome-maps:
+
+INTROSPECTION=yes
+VALA=yes
+VAPI=yes
+
+  
