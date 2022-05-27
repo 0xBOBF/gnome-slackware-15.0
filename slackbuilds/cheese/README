@@ -1,0 +1,5 @@
+Cheese is a program for the GNOME Desktop which allows you to take 
+photos, videos, and anything else you can think of with your webcam.
+
+Optional Dependencies:
+- gnome-video-effects (for effects at runtime)
