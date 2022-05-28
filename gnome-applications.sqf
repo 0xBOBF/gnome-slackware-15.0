@@ -10,7 +10,7 @@ baobab
 
 simple-scan
 
-gnome-screenshot # Not really needed, all its functionality can be done with PrintScreen button and ctrl/shit/alt combos.
+gnome-screenshot # Not really needed, all its functionality can be done with PrintScreen button and ctrl/shift/alt combos.
 
 clutter-gst
 cheese
