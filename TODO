@@ -1,2 +1,0 @@
-The GNOME applications need to be built in a clean environment to verify dependencies in the *.info files are correct.
-

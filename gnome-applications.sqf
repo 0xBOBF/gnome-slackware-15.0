@@ -1,26 +1,37 @@
-#NOTE: THIS QUEUE IS A WORK IN PROGRESS
 gnome-terminal
 
 gnome-system-monitor
 
 gnome-weather
 
-libdazzle
-gnome-calendar
+gnome-disk-utility
+
+baobab
+
+simple-scan
 
 gnome-screenshot # Not really needed, all its functionality can be done with PrintScreen button and ctrl/shit/alt combos.
 
-libpeas
+clutter-gst
+cheese
+
+libdazzle
+gnome-calendar
+
 gtksourceview4
 gnome-calculator
 
+libpeas
 gedit
 
+exempi
+libgxps
+libiptcdata
+osinfo-db-tools
+osinfo-db
+libosinfo
+totem-pl-parser
 tracker-miners
-
-gnome-disk-utility
-
-simple-scan
 
 gspell
 gnome-recipes
