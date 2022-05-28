@@ -50,3 +50,19 @@ evolution
 telepathy-glib
 folks                 # Requires introspection/vala/vapi enabled on: libgdata, evolution-data-server
 gnome-maps*           # Requires introspection/vala/vapi enabled on: geocode-glib, libchamplain, gnome-online-accounts, libgweather4
+
+grilo
+gfbgraph
+gnome-photos
+
+nv-codec-headers
+gnome-remote-desktop
+
+gtk-vnc
+yajl
+libvirt
+libvirt-glib
+spice-protocol
+spice
+spice-gtk
+gnome-boxes
