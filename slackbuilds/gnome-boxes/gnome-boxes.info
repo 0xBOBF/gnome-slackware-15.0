@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-boxes/42/gnome-boxes-42.0.1.t
 MD5SUM="9de90f737435a445b355330dcc2f63bc"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="gtk-vnc libosinfo libvirt-glib spice-gtk"
+REQUIRES="gtk-vnc libhandy libosinfo libvirt-glib spice-gtk tracker webkit2gtk"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
