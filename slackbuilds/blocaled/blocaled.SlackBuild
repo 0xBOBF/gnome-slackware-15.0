@@ -86,7 +86,10 @@ CXXFLAGS="$SLKCFLAGS" \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --disable-static \
-  --build=$ARCH-slackware-linux
+  --build=$ARCH-slackware-linux \
+  --with-localeconfig=/etc/locale.conf \
+  --with-keyboardconfig=/etc/locale.conf \
+  --with-xkbdconfig=/usr/share/X11/xorg.conf.d/90-keyboard-layout-evdev.conf
 
 make
 make install DESTDIR=$PKG
@@ -96,6 +99,10 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+# Copy the configure-blocaled script to the package:
+mkdir -p $PKG/usr/bin/
+cp $CWD/configure-blocaled $PKG/usr/bin/configure-blocaled
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
