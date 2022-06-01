@@ -43,8 +43,8 @@ fi
 echo KEYMAP=$KEYMAP
 
 # Set LANG and LC_* variables from /etc/profile.d/lang.sh, otherwise use the following defaults:
-export LANG=en_US.UTF-8
-export LC_COLLATE=C
+LANG=en_US.UTF-8
+LC_COLLATE=C
 if [ -x "/etc/profile.d/lang.sh" ]; then
   grep '^[^#].*L.*=' /etc/profile.d/lang.sh | sed 's/.*export[[:blank:]]*//g'
 fi
