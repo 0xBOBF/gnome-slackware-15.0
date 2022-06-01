@@ -1,1 +1,7 @@
 A simple GNOME 3 application to access virtual machines.
+
+NOTE:
+gnome-boxes is only a graphical front end for virtual machines. The
+backend used is 'qemu', which can also be installed from 
+slackbuilds.org. 'qemu' must be built with smartcard passthrough 
+(libcacard), and usb redirection (usbredir) enabled.
