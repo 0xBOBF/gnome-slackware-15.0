@@ -42,14 +42,18 @@ if [ -x "/etc/rc.d/rc.keymap" ]; then
 fi
 echo KEYMAP=$KEYMAP
 
-# Set LANG and LC_* variables from /etc/profile.d/lang.sh, otherwise use the following defaults:
+# Echo all the L.* variables that are set in /etc/profile.d/lang.sh, otherwise use the following default:
 LANG=en_US.UTF-8
-LC_COLLATE=C
 if [ -x "/etc/profile.d/lang.sh" ]; then
-  grep '^[^#].*L.*=' /etc/profile.d/lang.sh | sed 's/.*export[[:blank:]]*//g'
+  if ( grep -q "^[^#].*LANG=.*" /etc/profile.d/lang.sh); then
+    grep '^[^#].*L.*=' /etc/profile.d/lang.sh | sed 's/.*export[[:blank:]]*//g'
+  else
+    echo LANG=$LANG
+    grep '^[^#].*L.*=' /etc/profile.d/lang.sh | sed 's/.*export[[:blank:]]*//g'
+  fi
+else
+  echo LANG=$LANG
 fi
-echo LANG=$LANG
-echo LC_COLLATE=$LC_COLLATE
-) | sort | uniq
+)
 ) > $LOCALE_CONF
 
