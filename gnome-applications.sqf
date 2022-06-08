@@ -90,7 +90,10 @@ gtk-vnc
 yajl
 libvirt
 libvirt-glib
+libcacard          # Build this before spice, so spice finds it.
 spice-protocol
 spice
 spice-gtk
+usbredir
+qemu
 gnome-boxes

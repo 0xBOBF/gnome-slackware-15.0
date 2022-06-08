@@ -1,10 +1,10 @@
 Cheese is a program for the GNOME Desktop which allows you to take 
 photos, videos, and anything else you can think of with your webcam.
 
-Note that the clutter-gtk/clutter/cogl dependencies need to be built
-with introspection enabled. These slackbuilds have introspection 
-disabled by default and require you to set the following environment
-variable at build time to re-enable building introspection files:
+NOTE: The clutter-gtk/clutter/cogl dependencies need to be built with 
+introspection enabled. These slackbuilds have introspection disabled 
+and require you to set the following environment variable at build time
+to re-enable building their introspection files:
 
 INTROSPECTION=yes
 
