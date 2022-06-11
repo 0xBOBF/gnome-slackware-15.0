@@ -169,8 +169,12 @@ gnome-photos
 nv-codec-headers
 gnome-remote-desktop
 
-# GNOME Boxes:
+# GNOME Connections
 gtk-vnc
+gtk-frdp
+gnome-Connections
+
+# GNOME Boxes:
 yajl
 libvirt
 libvirt-glib
