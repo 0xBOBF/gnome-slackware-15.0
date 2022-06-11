@@ -1,4 +1,10 @@
 gnome-disk-utility provides libraries and applications for dealing with
 storage devices, including GNOME Disks, gnome-disk-image-mounter and 
-gsd-disk-utility-notify are libraries and applications for dealing with
-storage devices.
+gsd-disk-utility-notify.
+
+Optional Dependency:
+- gnome-settings-daemon
+
+Note: The SlackBuild will automatically detect if gnome-settings-daemon
+is installed and enable building the plugin, otherwise it will be 
+disabled.

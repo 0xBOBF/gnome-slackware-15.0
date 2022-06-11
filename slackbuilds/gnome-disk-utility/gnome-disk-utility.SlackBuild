@@ -3,6 +3,7 @@
 # Slackware build script for gnome-disk-utility
 
 # Copyright 2022 Bob Funk Winnipeg, Canada
+# Copyright 2015,2021  Robby Workman, Tuscaloosa, Alabama, USA
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -76,6 +77,16 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+# Detect if gnome-settings-daemon is installed and disable building 
+# the plugin if its not installed:
+if ( pkg-config --exists gnome-settings-daemon); then
+  GSD_PLUGIN=true
+  echo "gnome-settings-daemon found, enabling plugin."
+else
+  GSD_PLUGIN=false
+  echo "gnome-settings-daemon not found, disabling plugin."
+fi
+
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
@@ -89,7 +100,8 @@ cd build
     --prefix=/usr \
     --sysconfdir=/etc \
     -Dstrip=true \
-    -Dlogind=libelogind
+    -Dlogind=libelogind \
+    -Dgsd_plugin=$GSD_PLUGIN
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
 cd ..
