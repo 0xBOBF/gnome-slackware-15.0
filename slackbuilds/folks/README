@@ -11,3 +11,5 @@ INTROSPECTION=yes
 VALA=yes
 VAPI=yes
 
+Folks will fail to build without introspection and vala/vapi support 
+enabled in these dependencies.
