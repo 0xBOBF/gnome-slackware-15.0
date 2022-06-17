@@ -1,5 +1,5 @@
 PRGNAM="gtk-frdp"
-VERSION="0-1"
+VERSION="0.1"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gtk-frdp"
 DOWNLOAD="https://gitlab.gnome.org/GNOME/gtk-frdp/-/archive/gtk-frdp-0-1/gtk-frdp-gtk-frdp-0-1.tar.gz"
 MD5SUM="1d6f847baaf0e6cecd7be684d2f0fef1"
