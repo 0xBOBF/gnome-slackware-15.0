@@ -35,11 +35,13 @@ libgweather
 gnome-settings-daemon
 
 # Mutter compositor:
+zenity
 mutter
 
 # Cheese is GNOME's webcam application:
 # NOTE: clutter-gst requires cogl/clutter-gtk/clutter-gst to be built with INTROSPECTION=yes
-# NOTE2: Build this before GNOME Control Center to build in webcam support to GNOME Control Cente (Used in User Profile Pic Settings)
+# NOTE2: Build this before GNOME Control Center to build in webcam support to GNOME Control 
+#        Center, which is used in user profile pic settings
 cogl
 clutter
 clutter-gtk
@@ -83,7 +85,7 @@ nautilus
 gnome-menus
 gnome-shell-extensions
 
-# Chrome GNOME Shell Browser Integration and deps:
+# Chrome GNOME Shell browser integration and deps:
 jq
 p7zip
 chrome-gnome-shell
@@ -115,9 +117,6 @@ baobab
 # GNOME Scanner Utility:
 simple-scan
 
-# GNOME Screenshot Utility (Not really needed, all its functionality can be done with PrintScreen button and ctrl/shift/alt combos):
-gnome-screenshot
-
 # GNOME Calendar:
 libdazzle
 gnome-calendar
@@ -140,11 +139,11 @@ libosinfo
 totem-pl-parser
 tracker-miners
 
-# GNOME Recipes:
-gspell
-gnome-recipes
+# Evince document viewer:
+evince
 
 # Evolution email/calendar/organizer client:
+gspell
 cmark
 libpst
 lua
@@ -152,6 +151,9 @@ highlight
 ytnef
 libchamplain
 evolution
+
+# File-Roller archive manager:
+file-roller
 
 # GNOME Maps:
 # folks requires introspection/vala/vapi enabled on: libgdata, evolution-data-server
@@ -165,20 +167,5 @@ grilo
 gfbgraph
 gnome-photos
 
-# GNOME Remote Desktop:
-nv-codec-headers
-gnome-remote-desktop
-
-# GNOME Connections
-gtk-vnc
-gtk-frdp
-gnome-Connections
-
-# GNOME Boxes:
-yajl
-libvirt
-libvirt-glib
-spice-protocol
-spice
-spice-gtk
-gnome-boxes
+# Seahorse GNOME Keyring manager:
+seahorse

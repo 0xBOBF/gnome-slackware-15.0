@@ -1,46 +1,78 @@
-# Gnome for Slackware 15.0
+﻿# Gnome for Slackware 15.0
 ## Overview
-This project provides the GNOME desktop in "SlackBuild" format for usage on Slackware 15.0. The goal is to use any existing packages from slackware or slackbuilds.org, and add only what is required to complete the GNOME desktop.
+This project provides the GNOME desktop in "SlackBuild" format for use on Slackware 15.0.
 
-The slackbuilds in this project must be able to build on slackware 15.0, with no custom upgrades to base Slackware packages. When Slackware 15.0 released, GNOME 41 was the latest version. The builds here will generally be from that same release, although it may vary depending on pre-existing package versions in Slackware and slackbuilds.org.
+The SlackBuilds in this project are intended to be built on Slackware 15.0, with no custom upgrades required to the base Slackware packages. When Slackware 15.0 released, GNOME 41 was the latest version. The builds here will generally be from that same release, although it may vary depending on: 
+- Pre-existing library versions in Slackware (e.g. The existing GTK4 version limits many newer versions of applications to pre GNOME 42 versions).
+- Existing versions of programs on slackbuilds.org, since some applications already have existing maintainers.
+- Any combination of the above two that limit what latest version of GNOME software that can be built on Slackware-15.0
 
-## The Core Components
-Modern desktop environments like GNOME and KDE have many components, making a comprehensive build difficult to manage. This project takes the approach of building the "core components" required for GNOME, and then the user can add on components from there to build the desired system.
+## Building and Installing
+Most of the SlackBuilds in this repo are hosted on slackbuilds.org. This means that the GNOME desktop can be built and installed using existing SlackBuild tools like 'sbopkg'.
 
-At the core of GNOME is the "gnome-shell" graphical environment, along with the "gnome-session" session manager, and the "gdm" display manager, used for login and screen locking functionality. With these three packages installed, gnome will be functional and applications from Slackware can be used for everything else.
+The GNOME desktop consists of multiple libraries and applications, so queuefiles are provided to help in building the software in the correct order. There are two queuefiles provided in this repo:
 
-Note that gnome-shell has a number of dependencies in the form of programs and libraries, used to give it functionality. Key dependencies that are used to build gnome-shell include evolution-data-server, gnome-online-accouts, gnome-control-center, gnome-settings-daemon, and the mutter window manager/wayland compositor. Slackbuilds for required dependencies that are not already on slackbuilds.org are also in this repo.
+1. gnome-basic.sqf - A minimal GNOME desktop without any additional GNOME applications. This provides the basic GNOME Shell, GNOME Session Manager, GDM display manager, and ability to tweak the system and extensions.
 
-## Additional Components
-The core components only provide the basic GNOME desktop, along with some things like a panel, application menu, and control center to name a few. Several additional packages are provided to allow for easier customization of the GNOME desktop, mainly focused on enabling extensions from extensions.gnome.org, and adding a few other basic programs.
- - nautilus (GNOME's file manager)
- - gnome-terminal (there are existing terminals on Slackware, but this one matches the look of gnome)
- - gnome-backgrounds (some gnome provided wallpapers)
- - gnome-extensions (a control panel for managing extensions)
- - gnome-tweaks (useful for changing themes, adding back the minimize button, changing wallpapers)
- - chrome-gnome-shell (browser integration for extensions.gnome.org)
+2. gnome-all.sqf - This builds most of the available GNOME software from slackbuilds.org, some of which integrate into the GNOME desktop to provide more features. See the queuefile for details of what is included. Note that some environment variables need to be set for the SlackBuilds included in this file. The gnome-all.env file has these variables set properly and can be sourced before starting the build.
 
- Note that "chrome-gnome-shell" is the "system side" of the browser integration for gnome extensions. You will also have to install the browser extension itself to enable switching extensions directly from extensions.gnome.org. If you omit browser integration, you can still manually download and install extensions. The extensions system is useful for configuring the GNOME desktop. Some useful extensions include:
- - libappindicator or Tray Icons Reloaded (provides a system tray for things like hplip, bluetooth, discord, etc.)
- - Hide/Remove the activities button
- - Add an applications menu (built in or other available)
-
- ## Building and Installing
- This is a work in progress, but the general idea is that these will all be on slackbuilds.org one day. Once that is the case, you can use 'sbopkg' to build the core components, and additional components. There is also a "queue file" for sbopkg that you can use to automatically build the core and additional components, in the correct order. See the "gnome-basic.sqf" file provided in this repo.
-
-## Preparing the Build
-The gnome control center and settings daemons use 'colord' as a dependency, which needs its own user and group. Make sure to create this user and group before starting the build process, or colord will fail to build.
+Before starting either build you will need to create a 'colord' group and user, which is needed by the colord dependency for the GNOME desktop. Use the following commands as root to set this up:
 ```bash
  groupadd -g 303 colord
  useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
 ```
 
-### Build Variables
-NOTE: The current build queue can be built and used without these variables. They will become necessary for some gnome applications that will eventually be added. For now, just skip this.
-
-In the future this queue build will be built out to include more gnome applications. When that happens, some of the packages built from this queue will need some options switched on. You can set these in the environment before starting the build, so they are picked up by the builds that use them (evolution-data-server and gnome-online-accounts and their deps).
+If using the gnome-all.sqf queuefile then you will also need to set up an 'avahi' group and user, which is an optional dependency that is used in the full build. The following commands will set up an avahi group and user:
 ```bash
-export INTROSPECTION=yes
-export VAPI=yes
-export VALA=yes
+ groupadd -g 214 avahi
+ useradd -u 214 -g 214 -c Avahi -d /dev/null -s /bin/false avahi
 ```
+
+After setting up the appropriate users and groups as listed above, you can build and install the GNOME desktop from slackbuilds.org using the providied queuefiles. For example, the steps to build and install the gnome-all queue using 'sbopkg' would be as follows:
+```bash
+wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-all.sqf
+wget https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-all.env
+source gnome-all.env
+sbopkg -i gnome-all
+```
+
+Building and installing the gnome-basic queuefile is a little simpler, since it doesnt have envrionment variables that need to be set. The steps to build this version with 'sbopkg' would be:
+```bash
+wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-basic.sqf
+sbopkg -i gnome-basic
+```
+
+## Additional Setup Required
+Slackware 15.0 comes with support for GDM already in its `/etc/rc.d/rc.4` init script. However, GDM is started in this script with an invalid option, which will cause GDM to fail to start by default. You will need to edit the script and remove the `-nodaemon` option before attempting to use GDM from runlevel 4. After correcting, the gdm stanza should be:
+```bash
+if [ -x /usr/sbin/gdm ]; then
+  exec /usr/sbin/gdm
+fi
+```
+
+If you use the gnome-all.sqf queuefile, then you will also install avahi which is an optional dependency. Avahi has a couple daemons that should be started at boot and stopped at shutdown. This can be done using `rc.local` and `rc.local_shutdown` scripts (this information is also in the Avahi README).
+
+Start the daemons with the following in `/etc/rc.d/rc.local`:
+```bash
+# Start avahidaemon
+if [ -x /etc/rc.d/rc.avahidaemon ]; then
+ /etc/rc.d/rc.avahidaemon start
+fi
+# Start avahidnsconfd
+if [ -x /etc/rc.d/rc.avahidnsconfd ]; then
+  /etc/rc.d/rc.avahidnsconfd start
+fi
+```
+
+Stop the daemons with the following in `/etc/rc.d/rc.local_shutdown`:
+```bash
+# Stop avahidnsconfd
+if [ -x /etc/rc.d/rc.avahidnsconfd ]; then
+  /etc/rc.d/rc.avahidnsconfd stop
+fi
+# Stop avahidaemon
+if [ -x /etc/rc.d/rc.avahidaemon ]; then
+  /etc/rc.d/rc.avahidaemon stop
+fi
+```
+
