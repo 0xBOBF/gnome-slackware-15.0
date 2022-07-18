@@ -33,6 +33,7 @@ avahi
 geoclue2
 libgweather
 gnome-settings-daemon
+blocaled
 
 # Mutter compositor:
 zenity
