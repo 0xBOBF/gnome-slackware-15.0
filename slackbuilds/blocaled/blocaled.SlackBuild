@@ -103,6 +103,7 @@ for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; r
 # Copy the configure-blocaled script to the package:
 mkdir -p $PKG/usr/bin/
 cp $CWD/configure-blocaled $PKG/usr/bin/configure-blocaled
+chmod 755 $PKG/usr/bin/configure-blocaled
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
