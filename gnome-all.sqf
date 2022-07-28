@@ -3,21 +3,7 @@
 # This is the 'gnome-all' build. It pulls in all the gnome packages from slackbuilds.org,
 # and builds them in appropriate order, enabling as many features as possible.
 #
-# NOTE: Some builds in this queue require introspection and vala bindings built. Most of
-# the time these are enabled by default, but there are several builds which do the opposite.
-# Therefore, set the following environment variables before starting the build:
-#
-# export INTROSPECTION=yes
-# export VALA=yes
-# export VAPI=yes
-#
-# This one allows geoclue2 to build in avahi support:
-# export AVAHI=yes
-#
-# This one builds webcam support into the gnome control center (for profile pics):
-# export CHEESE=true
-#
-# The rest of the list is grouped into relevant dependencies, and commented with details.
+# The list is grouped into relevant dependencies, and commented with details.
 # Note that some builds have shared deps. This list has cropped duplicates, leaving only
 # the first occurance, so all deps are met without rebuilding any packages.
 #
@@ -39,9 +25,8 @@ zenity
 mutter
 
 # Cheese is GNOME's webcam application:
-# NOTE: clutter-gst requires cogl/clutter-gtk/clutter-gst to be built with INTROSPECTION=yes
-# NOTE2: Build this before GNOME Control Center to build in webcam support to GNOME Control 
-#        Center, which is used in user profile pic settings
+# NOTE: Build this before GNOME Control Center to build in webcam support to GNOME Control 
+#       Center, which is used in user profile pic settings
 cogl
 clutter
 clutter-gtk
@@ -156,8 +141,6 @@ evolution
 file-roller
 
 # GNOME Maps:
-# folks requires introspection/vala/vapi enabled on: libgdata, evolution-data-server
-# gnome-maps requires introspection/vala/vapi enabled on: geocode-glib, libchamplain, gnome-online-accounts, libgweather4
 telepathy-glib
 folks
 gnome-maps

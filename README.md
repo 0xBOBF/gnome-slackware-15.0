@@ -14,7 +14,7 @@ The GNOME desktop consists of multiple libraries and applications, so queuefiles
 
 1. gnome-basic.sqf - A minimal GNOME desktop without any additional GNOME applications. This provides the basic GNOME Shell, GNOME Session Manager, GDM display manager, and ability to tweak the system and extensions.
 
-2. gnome-all.sqf - This builds most of the available GNOME software from slackbuilds.org, some of which integrate into the GNOME desktop to provide more features. See the queuefile for details of what is included. Note that some environment variables need to be set for the SlackBuilds included in this file. The gnome-all.env file has these variables set properly and can be sourced before starting the build.
+2. gnome-all.sqf - This builds most of the available GNOME software from slackbuilds.org, some of which integrate into the GNOME desktop to provide more features. See the queuefile for details of what is included.
 
 Before starting either build you will need to create a 'colord' group and user, which is needed by the colord dependency for the GNOME desktop. Use the following commands as root to set this up:
 ```bash
@@ -31,8 +31,6 @@ If using the gnome-all.sqf queuefile then you will also need to set up an 'avahi
 After setting up the appropriate users and groups as listed above, you can build and install the GNOME desktop from slackbuilds.org using the providied queuefiles. For example, the steps to build and install the gnome-all queue using 'sbopkg' would be as follows:
 ```bash
 wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-all.sqf
-wget https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-all.env
-source gnome-all.env
 sbopkg -i gnome-all
 ```
 
