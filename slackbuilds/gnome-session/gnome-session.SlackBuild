@@ -79,6 +79,9 @@ find -L . \
 # Patch gnome-session so it can be built with elogind:
 patch -Np1 -i $CWD/0001-meson-add-elogind-support.patch
 
+# Patch the gnome-session wrapped script to source profile scripts:
+patch -Np1 -i $CWD/0002-gnome-session-add-profile-sourcing.patch
+
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
