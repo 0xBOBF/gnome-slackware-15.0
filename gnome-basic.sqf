@@ -21,6 +21,7 @@ gnome-settings-daemon
 mutter
 
 # GNOME Control Center and deps:
+libdaemon
 blocaled
 colord-gtk
 gnome-bluetooth
