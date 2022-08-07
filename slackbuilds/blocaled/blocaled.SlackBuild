@@ -87,9 +87,9 @@ CXXFLAGS="$SLKCFLAGS" \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --disable-static \
   --build=$ARCH-slackware-linux \
-  --with-localeconfig=/etc/locale.conf \
-  --with-keyboardconfig=/etc/locale.conf \
-  --with-xkbdconfig=/usr/share/X11/xorg.conf.d/90-keyboard-layout-evdev.conf
+  --with-localeconfig=/var/lib/blocaled/gnome-locale.conf \
+  --with-keyboardconfig=/var/lib/blocaled/gnome-locale.conf \
+  --with-xkbdconfig=/etc/X11/xorg.conf.d/91-keyboard-layout-libinput.conf
 
 make
 make install DESTDIR=$PKG
@@ -100,10 +100,6 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 find $PKG/usr/man -type f -exec gzip -9 {} \;
 for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
-# Copy the configure-blocaled script to the package:
-mkdir -p $PKG/usr/bin/
-cp $CWD/configure-blocaled $PKG/usr/bin/configure-blocaled
-
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
   AUTHORS COPYING NEWS README TODO \
@@ -112,7 +108,6 @@ cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
-cat $CWD/doinst.sh > $PKG/install/doinst.sh
 
 cd $PKG
 /sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
