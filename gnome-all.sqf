@@ -34,6 +34,7 @@ clutter-gst
 cheese
 
 # GNOME Control Center and deps:
+blocaled
 colord-gtk
 gnome-bluetooth
 gsound
