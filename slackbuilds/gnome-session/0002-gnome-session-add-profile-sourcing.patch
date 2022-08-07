@@ -1,62 +1,75 @@
 diff -Naur gnome-session-42.0/gnome-session/gnome-session.in gnome-session-42.0-patched/gnome-session/gnome-session.in
---- gnome-session-42.0/gnome-session/gnome-session.in	2022-08-03 19:15:53.227967625 -0000
-+++ gnome-session-42.0-patched/gnome-session/gnome-session.in	2022-08-03 19:17:49.002962878 -0000
-@@ -10,6 +10,58 @@
-     exec bash -c "exec -l '$SHELL' -c '$0 -l $*'"
-   else
+--- gnome-session-42.0/gnome-session/gnome-session.in	2022-03-21 15:13:31.651419000 -0500
++++ gnome-session-42.0-patched/gnome-session/gnome-session.in	2022-08-06 20:34:22.718063192 -0500
+@@ -12,6 +12,71 @@
      shift
-+
-+    # Source some profile scripts in gnome so we dont have to
-+    # depend on a systemd locale service.
-+    # This code was copied from KDE's "wayland-session" script.
-+    # Copyright (C) 2015-2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
-+    # This file is extracted from kde-workspace (kdm/kfrontend/genkdmconf.c)
-+    # Copyright (C) 2001-2005 Oswald Buddenhagen <ossi@kde.org>
-+    # Added to gnome's "gnome-session" script by Bob Funk <bobfunk11@gmail.com>
-+    # Note that the respective logout scripts are not sourced.
-+    case $SHELL in
-+      */bash)
-+        [ -z "$BASH" ] && exec $SHELL $0 "$@"
-+        set +o posix
-+        [ -f /etc/profile ] && . /etc/profile
-+        if [ -f $HOME/.bash_profile ]; then
-+          . $HOME/.bash_profile
-+        elif [ -f $HOME/.bash_login ]; then
-+          . $HOME/.bash_login
-+        elif [ -f $HOME/.profile ]; then
-+          . $HOME/.profile
-+        fi
-+      ;;
-+      */zsh)
-+        [ -z "$ZSH_NAME" ] && exec $SHELL $0 "$@"
-+        [ -d /etc/zsh ] && zdir=/etc/zsh || zdir=/etc
-+        zhome=${ZDOTDIR:-$HOME}
-+        # zshenv is always sourced automatically.
-+        [ -f $zdir/zprofile ] && . $zdir/zprofile
-+        [ -f $zhome/.zprofile ] && . $zhome/.zprofile
-+        [ -f $zdir/zlogin ] && . $zdir/zlogin
-+        [ -f $zhome/.zlogin ] && . $zhome/.zlogin
-+        emulate -R sh
-+      ;;
-+      */csh|*/tcsh)
-+        # [t]cshrc is always sourced automatically.
-+        # Note that sourcing csh.login after .cshrc is non-standard.
-+        wlsess_tmp=`mktemp /tmp/wlsess-env-XXXXXX`
-+        $SHELL -c "if (-f /etc/csh.login) source /etc/csh.login; if (-f ~/.login) source ~/.login; /bin/sh -c 'export -p' >! $wlsess_tmp"
-+        . $wlsess_tmp
-+        rm -f $wlsess_tmp
-+      ;;
-+      */fish)
-+        xsess_tmp=`mktemp /tmp/xsess-env-XXXXXX`
-+        $SHELL --login -c "/bin/sh -c 'export -p' > $xsess_tmp"
-+        . $xsess_tmp
-+        rm -f $xsess_tmp
-+      ;;
-+      *) # Plain sh, ksh, and anything we do not know.
-+        [ -f /etc/profile ] && . /etc/profile
-+        [ -f $HOME/.profile ] && . $HOME/.profile
-+      ;;
-+  esac
    fi
  fi
++# Get blocaled's value for LANG. We can use it so that the gnome-control-panel
++# regional settings actually work. However, the setting is shared for all users
++# so we will only use it if the user doesnt specify a custom LANG in $HOME/.profile
++# Also skip using blocaled for gdm/greeter, so that gdm follows /etc/profile.d/lang.sh
++if  [ "x$XDG_SESSION_CLASS" != "xgreeter" ]; then
++  # The following dbus property returns as "LANG=<locale-utf>". eval to use the returned value:
++  eval $(busctl get-property org.freedesktop.locale1 /org/freedesktop/locale1 org.freedesktop.locale1 Locale | cut -d\" -f 2)
++  if [ -n "$LANG" ]; then
++    blocaled_lang=$LANG
++  fi
++fi
++
++# Source the standard profile scripts in a gnome-session.
++# This code was copied from KDE's "wayland-session" script.
++# Copyright (C) 2015-2016 Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
++# This file is extracted from kde-workspace (kdm/kfrontend/genkdmconf.c)
++# Copyright (C) 2001-2005 Oswald Buddenhagen <ossi@kde.org>
++# Added to gnome's "gnome-session" script by Bob Funk <bobfunk11@gmail.com>
++# Note that the respective logout scripts are not sourced.
++case $SHELL in
++  */bash)
++    [ -z "$BASH" ] && exec $SHELL $0 "$@"
++    set +o posix
++    [ -f /etc/profile ] && . /etc/profile
++    [ -n "$blocaled_lang" ] && export LANG=$blocaled_lang
++    if [ -f $HOME/.bash_profile ]; then
++      . $HOME/.bash_profile
++    elif [ -f $HOME/.bash_login ]; then
++      . $HOME/.bash_login
++    elif [ -f $HOME/.profile ]; then
++      . $HOME/.profile
++    fi
++  ;;
++  */zsh)
++    [ -z "$ZSH_NAME" ] && exec $SHELL $0 "$@"
++    [ -d /etc/zsh ] && zdir=/etc/zsh || zdir=/etc
++    [ -n "$blocaled_lang" ] && export LANG=$blocaled_lang
++    zhome=${ZDOTDIR:-$HOME}
++    # zshenv is always sourced automatically.
++    [ -f $zdir/zprofile ] && . $zdir/zprofile
++    [ -f $zhome/.zprofile ] && . $zhome/.zprofile
++    [ -f $zdir/zlogin ] && . $zdir/zlogin
++    [ -f $zhome/.zlogin ] && . $zhome/.zlogin
++    emulate -R sh
++  ;;
++  */csh|*/tcsh)
++    # [t]cshrc is always sourced automatically.
++    # Note that sourcing csh.login after .cshrc is non-standard.
++    wlsess_tmp=`mktemp /tmp/wlsess-env-XXXXXX`
++    $SHELL -c "if (-f /etc/csh.login) source /etc/csh.login; if (-f ~/.login) source ~/.login; /bin/sh -c 'export -p' >! $wlsess_tmp"
++    . $wlsess_tmp
++    rm -f $wlsess_tmp
++  ;;
++  */fish)
++    xsess_tmp=`mktemp /tmp/xsess-env-XXXXXX`
++    $SHELL --login -c "/bin/sh -c 'export -p' > $xsess_tmp"
++    . $xsess_tmp
++    rm -f $xsess_tmp
++  ;;
++  *) # Plain sh, ksh, and anything we do not know.
++    [ -f /etc/profile ] && . /etc/profile
++    [ -n "$blocaled_lang" ] && export LANG=$blocaled_lang
++    [ -f $HOME/.profile ] && . $HOME/.profile
++  ;;
++esac
  
+ SETTING=$(G_MESSAGES_DEBUG='' gsettings get org.gnome.system.locale region)
+ REGION=${SETTING#\'}
