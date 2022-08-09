@@ -21,8 +21,6 @@ gnome-settings-daemon
 mutter
 
 # GNOME Control Center and deps:
-libdaemon
-blocaled
 colord-gtk
 gnome-bluetooth
 gsound
@@ -47,6 +45,8 @@ gnome-shell
 gnome-session
 
 # GNOME Display Manager:
+libdaemon
+blocaled
 gdm
 
 # GNOME Tweaks:

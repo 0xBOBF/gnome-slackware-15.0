@@ -34,7 +34,6 @@ clutter-gst
 cheese
 
 # GNOME Control Center and deps:
-blocaled
 colord-gtk
 gnome-bluetooth
 gsound
@@ -59,6 +58,7 @@ gnome-shell
 gnome-session
 
 # GNOME Display Manager:
+blocaled
 gdm
 
 # GNOME Tweaks:
