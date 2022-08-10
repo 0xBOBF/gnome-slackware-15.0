@@ -80,6 +80,7 @@ find -L . \
 patch -Np1 -i $CWD/0001-Xsession-Don-t-start-ssh-agent-by-default.patch
 patch -Np1 -i $CWD/0002-meson-allow-building-with-elogind.patch
 patch -Np1 -i $CWD/0003-add-wayland-session-script.patch
+patch -Np1 -i $CWD/0004-fix-Xsession-language-in-gnome.patch
 
 mkdir build
 cd build
