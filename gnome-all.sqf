@@ -76,6 +76,9 @@ jq
 p7zip
 chrome-gnome-shell
 
+# LibAppIndicator GNOME Shell extension:
+gnome-shell-extension-appindicator
+
 # GNOME Backgrounds:
 gnome-backgrounds
 
@@ -153,3 +156,6 @@ gnome-photos
 
 # Seahorse GNOME Keyring manager:
 seahorse
+
+# GNOME Screenshot:
+gnome-screenshot

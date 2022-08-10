@@ -64,3 +64,6 @@ jq
 p7zip
 chrome-gnome-shell
 gnome-backgrounds
+
+# LibAppIndicator GNOME Shell extension:
+gnome-shell-extension-appindicator
