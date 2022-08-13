@@ -77,7 +77,9 @@ p7zip
 chrome-gnome-shell
 
 # LibAppIndicator GNOME Shell extension:
-gnome-shell-extension-appindicator
+# NOTE: Leaving this out for now, use the extension from extensions.gnome.org instead,
+# becuse this systemwide version needs a patch still.
+#gnome-shell-extension-appindicator
 
 # GNOME Backgrounds:
 gnome-backgrounds
