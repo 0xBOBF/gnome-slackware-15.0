@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
         |-----handy-ruler------------------------------------------------------|
-blocaled: blocaled (locale settings D-Bus service)
+blocaled: blocaled (localed D-Bus service)
 blocaled:
 blocaled: The blocaled daemon implements the standard localed (i.e. 
 blocaled: org.freedesktop.locale1) D-Bus interface as a stand-alone daemon.

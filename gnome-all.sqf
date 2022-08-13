@@ -58,6 +58,7 @@ gnome-shell
 gnome-session
 
 # GNOME Display Manager:
+blocaled
 gdm
 
 # GNOME Tweaks:
@@ -74,6 +75,11 @@ gnome-shell-extensions
 jq
 p7zip
 chrome-gnome-shell
+
+# LibAppIndicator GNOME Shell extension:
+# NOTE: Leaving this out for now, use the extension from extensions.gnome.org instead,
+# becuse this systemwide version needs a patch still.
+#gnome-shell-extension-appindicator
 
 # GNOME Backgrounds:
 gnome-backgrounds
@@ -152,3 +158,6 @@ gnome-photos
 
 # Seahorse GNOME Keyring manager:
 seahorse
+
+# GNOME Screenshot:
+gnome-screenshot

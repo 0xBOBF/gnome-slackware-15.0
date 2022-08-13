@@ -45,6 +45,8 @@ gnome-shell
 gnome-session
 
 # GNOME Display Manager:
+libdaemon
+blocaled
 gdm
 
 # GNOME Tweaks:
@@ -62,3 +64,9 @@ jq
 p7zip
 chrome-gnome-shell
 gnome-backgrounds
+
+# LibAppIndicator GNOME Shell extension:
+# NOTE: Leaving this out for now, use the extension from extensions.gnome.org instead,
+# becuse this systemwide version needs a patch still.
+#gnome-shell-extension-appindicator
+
