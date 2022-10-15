@@ -137,7 +137,7 @@ evince
 gspell
 cmark
 libpst
-lua
+lua53
 highlight
 ytnef
 libchamplain
