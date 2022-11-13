@@ -28,8 +28,7 @@
 # TO make this work we patch gnome-shell to allow it to build against 
 # Slackware's gsettings-desktop-schemas-40.0. Then we install the 41.0 schemas
 # in a alternate location, compile them, and show gnome-shell where they are 
-# using XDG_DATA_DIRS at runtime with the /etc/profile.d/gnome-shell.sh profile
-# script.
+# using XDG_DATA_DIRS at runtime with a wrapper script.
 
 cd $(dirname $0) ; CWD=$(pwd)
 
