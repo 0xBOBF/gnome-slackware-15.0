@@ -22,6 +22,7 @@ gnome-settings-daemon
 
 # Mutter compositor:
 zenity
+xvfb-run
 mutter
 
 # Cheese is GNOME's webcam application:
@@ -45,6 +46,7 @@ bubblewrap
 webkit2gtk
 rest
 gnome-online-accounts
+cups-pk-helper
 gnome-control-center
 
 # GNOME Shell and deps:
@@ -52,6 +54,7 @@ libgdata
 libgweather4
 evolution-data-server
 gnome-autoar
+adobe-source-code-pro-font
 gnome-shell
 
 # GNOME Session Manager:
@@ -64,10 +67,24 @@ gdm
 # GNOME Tweaks:
 gnome-tweaks
 
-# GNOME Shell Extensions and deps:
+# tracker:
 libportal
 tracker
+
+# tracker-miners enables thumbnails in GNOME Files (nautilus):
+exempi
+libgxps
+libiptcdata
+osinfo-db-tools
+osinfo-db
+libosinfo
+totem-pl-parser
+tracker-miners
+
+# GNOME Files:
 nautilus
+
+# gnome-shell extensions:
 gnome-menus
 gnome-shell-extensions
 
@@ -77,9 +94,7 @@ p7zip
 chrome-gnome-shell
 
 # LibAppIndicator GNOME Shell extension:
-# NOTE: Leaving this out for now, use the extension from extensions.gnome.org instead,
-# becuse this systemwide version needs a patch still.
-#gnome-shell-extension-appindicator
+gnome-shell-extension-appindicator
 
 # GNOME Backgrounds:
 gnome-backgrounds
@@ -120,16 +135,6 @@ gnome-calculator
 libpeas
 gedit
 
-# tracker-miners enables thumbnails in GNOME Files (nautilus):
-exempi
-libgxps
-libiptcdata
-osinfo-db-tools
-osinfo-db
-libosinfo
-totem-pl-parser
-tracker-miners
-
 # Evince document viewer:
 evince
 
@@ -152,6 +157,7 @@ folks
 gnome-maps
 
 # GNOME Photos:
+libsoup3
 grilo
 gfbgraph
 gnome-photos

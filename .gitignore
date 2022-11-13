@@ -5,3 +5,6 @@ gnome-all.sqf.new
 gnome-basic.sqf.new
 UPDATE
 pending
+slackbuilds/gnome-backgrounds-42
+slackbuilds/mutter-40
+slackbuilds/gnome-shell-40
