@@ -18,6 +18,7 @@ libgweather
 gnome-settings-daemon
 
 # Mutter Compositor:
+xvfb-run
 mutter
 
 # GNOME Control Center and deps:
@@ -32,6 +33,7 @@ bubblewrap
 webkit2gtk
 rest
 gnome-online-accounts
+cups-pk-helper
 gnome-control-center
 
 # GNOME Shell and deps:
@@ -39,6 +41,7 @@ libgdata
 libgweather4
 evolution-data-server
 gnome-autoar
+adobe-source-code-pro-font
 gnome-shell
 
 # GNOME Session Manager:
@@ -66,7 +69,5 @@ chrome-gnome-shell
 gnome-backgrounds
 
 # LibAppIndicator GNOME Shell extension:
-# NOTE: Leaving this out for now, use the extension from extensions.gnome.org instead,
-# becuse this systemwide version needs a patch still.
-#gnome-shell-extension-appindicator
+gnome-shell-extension-appindicator
 

@@ -2,7 +2,7 @@
 ## Overview
 This project provides the GNOME desktop in "SlackBuild" format for use on Slackware 15.0.
 
-The SlackBuilds in this project are intended to be built on Slackware 15.0, with no custom upgrades required to the base Slackware packages. When Slackware 15.0 released, GNOME 41 was the latest version. The builds here will generally be from that same release, although it may vary depending on: 
+The SlackBuilds in this project are intended to be built on Slackware 15.0, with no custom upgrades required to the base Slackware packages. When Slackware 15.0 released, GNOME 41 was the latest version. The builds here are from GNOME 41 or later, depending on:
 - Pre-existing library versions in Slackware (e.g. The existing GTK4 version limits many newer versions of applications to pre GNOME 42 versions).
 - Existing versions of programs on slackbuilds.org, since some applications already have existing maintainers.
 - Any combination of the above two that limit what latest version of GNOME software that can be built on Slackware-15.0
@@ -41,13 +41,6 @@ sbopkg -i gnome-basic
 ```
 
 ## Additional Setup Required
-Slackware 15.0 comes with support for GDM already in its `/etc/rc.d/rc.4` init script. However, GDM is started in this script with an invalid option, which will cause GDM to fail to start by default. You will need to edit the script and remove the `-nodaemon` option before attempting to use GDM from runlevel 4. After correcting, the gdm stanza should be:
-```bash
-if [ -x /usr/sbin/gdm ]; then
-  exec /usr/sbin/gdm
-fi
-```
-
 If you use the gnome-all.sqf queuefile, then you will also install avahi which is an optional dependency. Avahi has a couple daemons that should be started at boot and stopped at shutdown. This can be done using `rc.local` and `rc.local_shutdown` scripts (this information is also in the Avahi README).
 
 Start the daemons with the following in `/etc/rc.d/rc.local`:
