@@ -93,7 +93,7 @@ jq
 p7zip
 chrome-gnome-shell
 
-# Some GNOME Shell extensions in include by default:
+# Some GNOME Shell extensions to include by default:
 gnome-shell-extension-appindicator
 gnome-shell-extension-arc-menu
 gnome-shell-extension-dash-to-panel
