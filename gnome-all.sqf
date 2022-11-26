@@ -93,8 +93,10 @@ jq
 p7zip
 chrome-gnome-shell
 
-# LibAppIndicator GNOME Shell extension:
+# Some GNOME Shell extensions in include by default:
 gnome-shell-extension-appindicator
+gnome-shell-extension-arc-menu
+gnome-shell-extension-dash-to-panel
 
 # GNOME Backgrounds:
 gnome-backgrounds
@@ -167,3 +169,9 @@ seahorse
 
 # GNOME Screenshot:
 gnome-screenshot
+
+# Some games for GNOME:
+libgnome-games-support
+gnome-klotski
+gnome-mahjongg
+iagno
