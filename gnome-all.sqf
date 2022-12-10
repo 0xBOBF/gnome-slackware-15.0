@@ -97,6 +97,8 @@ chrome-gnome-shell
 gnome-shell-extension-appindicator
 gnome-shell-extension-arc-menu
 gnome-shell-extension-dash-to-panel
+gnome-shell-extension-gsconnect
+gnome-shell-extension-sound-output-device
 
 # GNOME Backgrounds:
 gnome-backgrounds
@@ -172,6 +174,8 @@ gnome-screenshot
 
 # Some games for GNOME:
 libgnome-games-support
+gnome-chess
 gnome-klotski
 gnome-mahjongg
+gnome-mines
 iagno
