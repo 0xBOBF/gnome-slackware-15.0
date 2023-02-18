@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+                         |-----handy-ruler------------------------------------------------------|
+gnome-desktop-environment: gnome-desktop-environment (GNOME Desktop 41.9)
+gnome-desktop-environment:
+gnome-desktop-environment: This is a meta package that pulls in all the dependencies to build
+gnome-desktop-environment: GNOME Desktop 41.9. This includes the desktop environment, as well as
+gnome-desktop-environment: a number of gnome applications that integrate nicely with the desktop.
+gnome-desktop-environment:
+gnome-desktop-environment:
+gnome-desktop-environment:
+gnome-desktop-environment:
+gnome-desktop-environment: https://www.gnome.org/
+gnome-desktop-environment:

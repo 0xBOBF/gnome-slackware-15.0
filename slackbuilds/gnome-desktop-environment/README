@@ -1,0 +1,16 @@
+This is a meta package that pulls in all the dependencies to build
+GNOME Desktop 41.9. This includes the desktop environment, as well as
+a number of gnome applications that integrate nicely with the desktop.
+
+The SlackBuild only installs the slack-desc meta data. The rest of the
+software is pulled in by the .info file REQUIRES information.
+
+Important note: 'colord' is included as a dependency and requires a 
+colord group and user for the build to complete properly. Please add
+the colord group and user before starting the build, otherwise the 
+entire queue will fail to build once it reaches the colord step. The
+following code will add the colord group and user:
+
+ groupadd -g 303 colord
+ useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
+

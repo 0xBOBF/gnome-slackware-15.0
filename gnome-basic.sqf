@@ -62,10 +62,10 @@ nautilus
 gnome-menus
 gnome-shell-extensions
 
-# Chrome GNOME browser integration and deps:
+# gnome-browser-connector and deps:
 jq
 p7zip
-chrome-gnome-shell
+gnome-browser-connector
 gnome-backgrounds
 
 # LibAppIndicator GNOME Shell extension:
