@@ -14,8 +14,6 @@ libgusb
 colord
 gnome-desktop
 geocode-glib
-libdaemon
-avahi
 geoclue2
 libgweather
 gnome-settings-daemon
@@ -61,6 +59,7 @@ gnome-shell
 gnome-session
 
 # GNOME Display Manager:
+libdaemon
 blocaled
 gdm
 
@@ -88,10 +87,10 @@ nautilus
 gnome-menus
 gnome-shell-extensions
 
-# Chrome GNOME Shell browser integration and deps:
+# gnome-browser-connector and deps:
 jq
 p7zip
-chrome-gnome-shell
+gnome-browser-connector
 
 # Some GNOME Shell extensions to include by default:
 gnome-shell-extension-appindicator
@@ -118,6 +117,9 @@ gnome-system-monitor
 # GNOME Weather (Also provides weather in the panel menu):
 gnome-weather
 
+# GNOME Clocks:
+gnome-clocks
+
 # GNOME Disks:
 gnome-disk-utility
 
@@ -138,6 +140,9 @@ gnome-calculator
 # gedit is an editor for GNOME:
 libpeas
 gedit
+
+# Eye of Gnome image viewer:
+eog
 
 # Evince document viewer:
 evince
@@ -179,3 +184,28 @@ gnome-klotski
 gnome-mahjongg
 gnome-mines
 iagno
+
+# GNOME Builder:
+sysprof
+sphinx_rtd_theme
+sphinxcontrib-serializinghtml
+sphinxcontrib-qthelp
+sphinxcontrib-jsmath
+sphinxcontrib-htmlhelp
+sphinxcontrib-devhelp
+sphinxcontrib-applehelp
+snowballstemmer
+pytz
+python3-babel
+imagesize
+alabaster
+Sphinx
+libgit2
+libgit2-glib
+template-glib
+python-smartypants
+python3-typogrify
+python-toml
+gi-docgen
+jsonrpc-glib
+gnome-builder
