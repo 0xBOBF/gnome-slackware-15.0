@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for gnome-connections
+# Slackware build script for gnome-software
 
-# Copyright 2022 Bob Funk, Winnipeg Canada
+# Copyright 2023, Bob Funk, Winnipeg Canada
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,11 +24,20 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=gnome-connections
-VERSION=${VERSION:-41.2}
+PRGNAM=gnome-software
+VERSION=${VERSION:-41.5}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
+
+# Set some default build options:
+FLATPAK=${FLATPAK:-true}
+FWUPD=${FWUPD:-false}
+MALCONTENT=${MALCONTENT:-false}
+PACKAGEKIT=${PACKAGEKIT:-false}
+SOUP2=${SOUP2:-true}
+SYSPROF=${SYSPROF:-disabled}
+TESTS=${TESTS:-false}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -67,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.?z
+tar xvf $CWD/$PRGNAM-$VERSION.tar.xz
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
@@ -88,17 +97,32 @@ cd build
     --mandir=/usr/man \
     --prefix=/usr \
     --sysconfdir=/etc \
+    -Dflatpak=$FLATPAK \
+    -Dfwupd=$FWUPD \
+    -Dmalcontent=$MALCONTENT \
+    -Dpackagekit=$PACKAGEKIT \
+    -Dsoup2=$SOUP2 \
+    -Dsysprof=$SYSPROF \
+    -Dtests=$TESTS \
     -Dstrip=true
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
 cd ..
 
+#rm -f $PKG/{,usr/}lib${LIBDIRSUFFIX}/*.la
+
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
+find $PKG/usr/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+
+# Remove superfluous README.md installed here:
+rm -rf $PKG/usr/share/doc
+
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
-  NEWS README.md \
+  AUTHORS COMMITMENT COPYING NEWS README.md RELEASE.md \
   $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 

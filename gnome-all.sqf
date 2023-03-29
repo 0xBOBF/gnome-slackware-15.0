@@ -30,6 +30,7 @@ cogl
 clutter
 clutter-gtk
 clutter-gst
+gnome-video-effects
 cheese
 
 # GNOME Control Center and deps:
@@ -88,16 +89,16 @@ gnome-menus
 gnome-shell-extensions
 
 # gnome-browser-connector and deps:
-jq
-p7zip
+#jq
+#p7zip
 gnome-browser-connector
 
 # Some GNOME Shell extensions to include by default:
-gnome-shell-extension-appindicator
-gnome-shell-extension-arc-menu
-gnome-shell-extension-dash-to-panel
-gnome-shell-extension-gsconnect
-gnome-shell-extension-sound-output-device
+#gnome-shell-extension-appindicator
+#gnome-shell-extension-arc-menu
+#gnome-shell-extension-dash-to-panel
+#gnome-shell-extension-gsconnect
+#gnome-shell-extension-sound-output-device
 
 # GNOME Backgrounds:
 gnome-backgrounds
@@ -177,13 +178,110 @@ seahorse
 # GNOME Screenshot:
 gnome-screenshot
 
+# Cantarell Fonts
+cantarell-fonts
+
+# GNOME Characters:
+gnome-characters
+
+# GNOME color profile manager:
+gnome-color-manager
+
+# GNOME Connections:
+gtk-vnc
+gnome-connections
+
+# GNOME Contacts:
+gnome-contacts
+
+# GNOME Music:
+libmediaart
+grilo-plugins
+gnome-music
+
+# GNOME Remote Desktop:
+nv-codec-headers
+gnome-remote-desktop
+
+# GNOME Videos:
+# Requires newer version of totem-pl-parser.
+totem
+
+# GNOME Tour:
+gnome-tour
+
+# GNOME User Share (runtime needs avahi)
+gnome-user-share
+
+# Rygel and deps:
+  gssdp # On SBo
+ gupnp # On SBo
+ gupnp-av # Added a build
+ gupnp-dlna # Added a build
+ gst-editing-services # On SBo
+rygel
+
+# Orca:
+orca
+
+# Sushi
+sushi
+
+# Epiphany:
+epiphany # Version on SBo fails to build, due to requiring newer libportal
+
+# GNOME Boxes:
+libosinfo
+yajl
+libvirt
+libvirt-glib
+#QEMU With all bells and whistles:
+ usbredir
+ libnfs
+ snappy
+  liburcu
+ glusterfs
+ libiscsi
+ virglrenderer
+ libslirp
+ vde2
+  pcsc-lite #Note: Requires "groupadd -g 257 pcscd" and "useradd -u 257 -g pcscd -d /var/run/pcscd -s /bin/false pcscd"
+ libcacard
+ device-tree-compiler
+ phodav
+  spice-protocol
+ spice
+spice-gtk
+qemu # Built with SLIRP=yes Note: Build after spice, to pick up spice-protocol support.
+gnome-boxes
+
+# GNOME Software:
+  libxmlb
+ AppStream
+#fwupd and friends: Not building fwupd, due to gcab issues causing FTB of fwupd on -current. Wait till maintainer fixes fwupd.
+  libjcat
+  python-smartypants
+  python3-typogrify
+  python-toml
+  protobuf3
+  protobuf-c
+  libsmbios
+  gcab
+ fwupd
+#flatpak and friends: Note: Builds against libsoup2, so gnome-software must also use soup2
+  xdg-desktop-portal-gtk
+  appstream-glib
+  ostree
+ flatpak
+gnome-software # set to use soup2
+
 # Some games for GNOME:
-libgnome-games-support
-gnome-chess
-gnome-klotski
-gnome-mahjongg
-gnome-mines
-iagno
+#libgnome-games-support
+#gnome-chess
+#gnome-klotski
+#gnome-mahjongg
+#gnome-mines
+#iagno
 
 # GNOME Builder:
 sysprof

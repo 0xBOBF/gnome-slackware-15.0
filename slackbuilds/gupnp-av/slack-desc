@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
         |-----handy-ruler------------------------------------------------------|
-gtk-frdp: gtk-frdp (RDP viewer widget)
-gtk-frdp:
-gtk-frdp: A RDP viewer widget for Gtk.
-gtk-frdp:
-gtk-frdp:
-gtk-frdp:
-gtk-frdp:
-gtk-frdp:
-gtk-frdp:
-gtk-frdp: https://gitlab.gnome.org/GNOME/gtk-frdp
-gtk-frdp:
+gupnp-av: gupnp-av (GUPnP A/V)
+gupnp-av:
+gupnp-av: GUPnP A/V is a small utility library that aims to ease the handling
+gupnp-av: and implementation of UPnP A/V profiles.
+gupnp-av:
+gupnp-av:
+gupnp-av:
+gupnp-av:
+gupnp-av:
+gupnp-av: https://gitlab.gnome.org/GNOME/gupnp-av
+gupnp-av:
