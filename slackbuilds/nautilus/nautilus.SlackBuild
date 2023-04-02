@@ -76,6 +76,15 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+# Conditionally patch nautilus source to allow it to build for newer
+# libportal versions. Patch required for libportal >= 0.5
+if (pkg-config --atleast-version 0.5 libportal) ; then
+  echo "Patching build to allow building with libportal >= 0.5"
+  patch -Np1 -i $CWD/ae752ea07895b918683f664fe78950255f7faab0.patch
+else
+  echo "Skipping libportal patch"
+fi
+
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
