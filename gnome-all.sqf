@@ -42,10 +42,14 @@ xdg-dbus-proxy
 libwpe
 wpebackend-fdo
 bubblewrap
+unifdef
 webkit2gtk
 rest
 gnome-online-accounts
 cups-pk-helper
+gnome-color-manager # Add here as a dep
+xdg-desktop-portal-gnome # Add here as a dep
+libgnomekbd # Add here as a dep
 gnome-control-center
 
 # GNOME Shell and deps:
@@ -68,7 +72,6 @@ gdm
 gnome-tweaks
 
 # tracker:
-libportal
 tracker
 
 # tracker-miners enables thumbnails in GNOME Files (nautilus):
@@ -78,19 +81,22 @@ libiptcdata
 osinfo-db-tools
 osinfo-db
 libosinfo
-totem-pl-parser
+libuchardet # Runtime dep for totem-pl-parser
+totem-pl-parser # Needs upgrade for totem later in the build.
 tracker-miners
 
 # GNOME Files:
+libportal # This is where this dep should be (for nautilus)
+# Note: Can build older 41.5 nautilus with newer libportal if patched.
+# Added a conditional patch to the nautilus build to allow libportal
+# to get upgraded on SBo.
 nautilus
 
 # gnome-shell extensions:
 gnome-menus
 gnome-shell-extensions
 
-# gnome-browser-connector and deps:
-#jq
-#p7zip
+# GNOME Extensions Browser Connector:
 gnome-browser-connector
 
 # Some GNOME Shell extensions to include by default:
@@ -143,7 +149,7 @@ libpeas
 gedit
 
 # Eye of Gnome image viewer:
-eog
+eog # Requires a patch to allow building against newer libportal versions.
 
 # Evince document viewer:
 evince
@@ -183,6 +189,9 @@ cantarell-fonts
 
 # GNOME Characters:
 gnome-characters
+
+# GNOME Font Viewer:
+gnome-font-viewer
 
 # GNOME color profile manager:
 gnome-color-manager
@@ -228,7 +237,7 @@ orca
 sushi
 
 # Epiphany:
-epiphany # Version on SBo fails to build, due to requiring newer libportal
+# epiphany # Version on SBo fails to build, due to requiring newer libportal, also its 43.0, needing webkit2gtk4.1
 
 # GNOME Boxes:
 libosinfo
