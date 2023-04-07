@@ -30,6 +30,7 @@ xdg-dbus-proxy
 libwpe
 wpebackend-fdo
 bubblewrap
+unifdef
 webkit2gtk
 rest
 gnome-online-accounts
