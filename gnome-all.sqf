@@ -227,21 +227,25 @@ totem
 #gnome-tour
 
 # GNOME User Share (runtime needs avahi)
-gnome-user-share
+# Not submitting, due to user daemon management requirements.
+#gnome-user-share
 
 # Rygel and deps:
-  gssdp # On SBo
- gupnp # On SBo
- gupnp-av # Added a build
- gupnp-dlna # Added a build
- gst-editing-services # On SBo
-rygel
+# Not submitting, due to user daemon management requirements.
+#  gssdp # On SBo
+# gupnp # On SBo
+# gupnp-av # Added a build
+# gupnp-dlna # Added a build
+# gst-editing-services # On SBo
+#rygel
 
 # Orca:
-orca
+# Skipping for now. Maybe someone else wants to maintain this and submit all the braille deps.
+#orca
 
 # Sushi
-sushi
+# Skipping for now. Does it even do anything noticable?
+#sushi
 
 # Epiphany:
 # epiphany # Version on SBo fails to build, due to requiring newer libportal, also its 43.0, needing webkit2gtk4.1
