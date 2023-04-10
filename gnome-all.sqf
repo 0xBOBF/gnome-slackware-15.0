@@ -197,8 +197,11 @@ gnome-font-viewer
 gnome-color-manager
 
 # GNOME Connections:
-gtk-vnc
-gnome-connections
+# Putting this one off for the gnome-41 release, due to difficulty
+# separating gnome-remote-desktop from systemd. Will get better in
+# later releases.
+#gtk-vnc
+#gnome-connections
 
 # GNOME Contacts:
 gnome-contacts
@@ -209,15 +212,19 @@ grilo-plugins
 gnome-music
 
 # GNOME Remote Desktop:
-nv-codec-headers
-gnome-remote-desktop
+# Putting this one off for the gnome-41 release, due to difficulty
+# separating gnome-remote-desktop from systemd. Will get better in
+# later releases.
+#nv-codec-headers
+#gnome-remote-desktop
 
 # GNOME Videos:
 # Requires newer version of totem-pl-parser.
 totem
 
 # GNOME Tour:
-gnome-tour
+# Do we "need" this?
+#gnome-tour
 
 # GNOME User Share (runtime needs avahi)
 gnome-user-share
@@ -240,49 +247,49 @@ sushi
 # epiphany # Version on SBo fails to build, due to requiring newer libportal, also its 43.0, needing webkit2gtk4.1
 
 # GNOME Boxes:
-libosinfo
-yajl
-libvirt
-libvirt-glib
+#libosinfo
+#yajl
+#libvirt
+#libvirt-glib
 #QEMU With all bells and whistles:
- usbredir
- libnfs
- snappy
-  liburcu
- glusterfs
- libiscsi
- virglrenderer
- libslirp
- vde2
-  pcsc-lite #Note: Requires "groupadd -g 257 pcscd" and "useradd -u 257 -g pcscd -d /var/run/pcscd -s /bin/false pcscd"
- libcacard
- device-tree-compiler
- phodav
-  spice-protocol
- spice
-spice-gtk
-qemu # Built with SLIRP=yes Note: Build after spice, to pick up spice-protocol support.
-gnome-boxes
+# usbredir
+# libnfs
+# snappy
+#  liburcu
+# glusterfs
+# libiscsi
+# virglrenderer
+# libslirp
+# vde2
+#  pcsc-lite #Note: Requires "groupadd -g 257 pcscd" and "useradd -u 257 -g pcscd -d /var/run/pcscd -s /bin/false pcscd"
+# libcacard
+# device-tree-compiler
+# phodav
+#  spice-protocol
+# spice
+#spice-gtk
+#qemu # Built with SLIRP=yes Note: Build after spice, to pick up spice-protocol support.
+#gnome-boxes
 
 # GNOME Software:
-  libxmlb
- AppStream
+#  libxmlb
+# AppStream
 #fwupd and friends: Not building fwupd, due to gcab issues causing FTB of fwupd on -current. Wait till maintainer fixes fwupd.
-  libjcat
-  python-smartypants
-  python3-typogrify
-  python-toml
-  protobuf3
-  protobuf-c
-  libsmbios
-  gcab
- fwupd
+#  libjcat
+#  python-smartypants
+#  python3-typogrify
+#  python-toml
+#  protobuf3
+#  protobuf-c
+#  libsmbios
+#  gcab
+# fwupd
 #flatpak and friends: Note: Builds against libsoup2, so gnome-software must also use soup2
-  xdg-desktop-portal-gtk
-  appstream-glib
-  ostree
- flatpak
-gnome-software # set to use soup2
+#  xdg-desktop-portal-gtk
+#  appstream-glib
+#  ostree
+# flatpak
+#gnome-software # set to use soup2
 
 # Some games for GNOME:
 #libgnome-games-support
@@ -293,26 +300,26 @@ gnome-software # set to use soup2
 #iagno
 
 # GNOME Builder:
-sysprof
-sphinx_rtd_theme
-sphinxcontrib-serializinghtml
-sphinxcontrib-qthelp
-sphinxcontrib-jsmath
-sphinxcontrib-htmlhelp
-sphinxcontrib-devhelp
-sphinxcontrib-applehelp
-snowballstemmer
-pytz
-python3-babel
-imagesize
-alabaster
-Sphinx
-libgit2
-libgit2-glib
-template-glib
-python-smartypants
-python3-typogrify
-python-toml
-gi-docgen
-jsonrpc-glib
-gnome-builder
+#sysprof
+#sphinx_rtd_theme
+#sphinxcontrib-serializinghtml
+#sphinxcontrib-qthelp
+#sphinxcontrib-jsmath
+#sphinxcontrib-htmlhelp
+#sphinxcontrib-devhelp
+#sphinxcontrib-applehelp
+#snowballstemmer
+#pytz
+#python3-babel
+#imagesize
+#alabaster
+#Sphinx
+#libgit2
+#libgit2-glib
+#template-glib
+#python-smartypants
+#python3-typogrify
+#python-toml
+#gi-docgen
+#jsonrpc-glib
+#gnome-builder
