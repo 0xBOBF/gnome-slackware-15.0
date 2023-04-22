@@ -47,9 +47,9 @@ webkit2gtk
 rest
 gnome-online-accounts
 cups-pk-helper
-gnome-color-manager # Add here as a dep
-xdg-desktop-portal-gnome # Add here as a dep
-libgnomekbd # Add here as a dep
+gnome-color-manager
+xdg-desktop-portal-gnome
+libgnomekbd
 gnome-control-center
 
 # GNOME Shell and deps:
@@ -81,12 +81,12 @@ libiptcdata
 osinfo-db-tools
 osinfo-db
 libosinfo
-libuchardet # Runtime dep for totem-pl-parser
-totem-pl-parser # Needs upgrade for totem later in the build.
+libuchardet
+totem-pl-parser
 tracker-miners
 
 # GNOME Files:
-libportal # This is where this dep should be (for nautilus)
+libportal
 # Note: Can build older 41.5 nautilus with newer libportal if patched.
 # Added a conditional patch to the nautilus build to allow libportal
 # to get upgraded on SBo.
@@ -149,7 +149,8 @@ libpeas
 gedit
 
 # Eye of Gnome image viewer:
-eog # Requires a patch to allow building against newer libportal versions.
+# Requires a patch to allow building against newer libportal versions.
+eog
 
 # Evince document viewer:
 evince
@@ -173,7 +174,7 @@ folks
 gnome-maps
 
 # GNOME Photos:
-libsoup3
+#libsoup3 # Removed dep and forced grilo to use soup2. The whole stack needs one or the other, cannot mix soups!
 grilo
 gfbgraph
 gnome-photos
