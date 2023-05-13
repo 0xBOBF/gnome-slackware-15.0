@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for GNOME Desktop 41.9
+# Slackware build script for GNOME'S "core" desktop release, i.e. the core
+# components released as the "GNOME Desktop". Versions of this script are
+# based on gnome-shell version.
 
 # Copyright 2023, Bob Funk, Winnpeg Canada
 # All rights reserved.
@@ -24,7 +26,7 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=gnome-desktop-environment
+PRGNAM=gnome-core
 VERSION=${VERSION:-41.9}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}

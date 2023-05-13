@@ -1,0 +1,19 @@
+# HOW TO EDIT THIS FILE:
+# The "handy ruler" below makes it easier to edit a package description.
+# Line up the first '|' above the ':' following the base package name, and
+# the '|' on the right side marks the last column you can put a character in.
+# You must make exactly 11 lines for the formatting to be correct.  It's also
+# customary to leave one space after the ':' except on otherwise blank lines.
+
+          |-----handy-ruler------------------------------------------------------|
+gnome-core: gnome-core (GNOME Desktop 41.9)
+gnome-core:
+gnome-core: This is a meta package that can be used to resolve all the
+gnome-core: dependencies of GNOME's core distribution from slackbuilds.org.
+gnome-core:
+gnome-core: Comes with an uninstall helper as well.
+gnome-core:
+gnome-core:
+gnome-core:
+gnome-core: https://www.gnome.org/
+gnome-core:

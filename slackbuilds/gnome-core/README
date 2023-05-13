@@ -1,9 +1,8 @@
-This is a meta package that pulls in all the dependencies to build
-GNOME Desktop 41.9. This includes the desktop environment, as well as
-a number of gnome applications that integrate nicely with the desktop.
+This is a meta package that can be used to resolve all the dependencies
+ of GNOME's core distribution from slackbuilds.org. This is close to 
+all of the core release. See the README.SBo file for details.
 
-The SlackBuild only installs the slack-desc meta data. The rest of the
-software is pulled in by the .info file REQUIRES information.
+This package also installs an uninstall helper script.
 
 Important note: 'colord' is included as a dependency and requires a 
 colord group and user for the build to complete properly. Please add
