@@ -1,8 +1,40 @@
-This is a meta package that can be used to resolve all the dependencies
- of GNOME's core distribution from slackbuilds.org. This is close to 
-all of the core release. See the README.SBo file for details.
+The 'gnome-core' package is essentially an empty package that depends
+on *all* the packages that are part of the gnome-core distribution, 
+AND are available on slackbuilds.org.
 
-This package also installs an uninstall helper script.
+Note that the "gnome-core distribution" is the official collection of 
+software that makes up a GNOME desktop release, e.g "GNOME Desktop 41".
+
+There are several omissions from the official gnome-core release, 
+compared to what is included in the gnome-core "meta package":
+
+ * gnome-builder - Omitted due to the large number of deps it adds. 
+                   It is available on slackbuilds.org, so users can
+                   easilly add it on themselves.
+
+ * gnome-software - A flatpak gui frontend. Adds a number of 
+                    dependencies and hasn't been uploaded to SBo.
+
+ * gnome-boxes - A qemu/libvirt gui frontend. Adds a number of
+                 dependencies and hasn't been uploaded to SBo.
+
+ * gnome-remote-desktop, - These three are user run daemons and makeup
+   gnome-user-share,       the "sharing" panel in GNOME's control panel.
+   rygel                   They depend on systemd's service manager and 
+                           yield broken controls in the panel when 
+                           systemd is not installed.
+                           Also not uploaded to SBo.
+
+ * epiphany - There is a build available on slackbuilds.org, but it is
+              built against webkit2gtk-4.1 & libsoup3, while the rest
+              of the gnome-core 41 distribution is built against the
+              older webkit2gtk-4.0 & libsoup2 libraries. The two can't
+              be mixed and will cause crashes.
+
+This package also provides a list of all installed packages in the
+file: /usr/doc/gnome-core-$VERSION/gnome-core.list. This list is useful
+for finding and removing packages installed by the gnome-core meta
+package dependencies. See the gnome-core.list file for details.
 
 Important note: 'colord' is included as a dependency and requires a 
 colord group and user for the build to complete properly. Please add
