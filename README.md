@@ -22,48 +22,15 @@ Before starting either build you will need to create a 'colord' group and user, 
  useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
 ```
 
-If using the gnome-all.sqf queuefile then you will also need to set up an 'avahi' group and user, which is an optional dependency that is used in the full build. The following commands will set up an avahi group and user:
-```bash
- groupadd -g 214 avahi
- useradd -u 214 -g 214 -c Avahi -d /dev/null -s /bin/false avahi
-```
-
-After setting up the appropriate users and groups as listed above, you can build and install the GNOME desktop from slackbuilds.org using the providied queuefiles. For example, the steps to build and install the gnome-all queue using 'sbopkg' would be as follows:
+After setting up the appropriate user and group as listed above, you can build and install the GNOME desktop from slackbuilds.org using the providied queuefiles. For example, the steps to build and install the gnome-all queue using 'sbopkg' would be as follows:
 ```bash
 wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-all.sqf
 sbopkg -i gnome-all
 ```
 
-Building and installing the gnome-basic queuefile is a little simpler, since it doesnt have envrionment variables that need to be set. The steps to build this version with 'sbopkg' would be:
+Or to build the "basic" version using 'sbopkg':
 ```bash
 wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-basic.sqf
 sbopkg -i gnome-basic
-```
-
-## Additional Setup Required
-If you use the gnome-all.sqf queuefile, then you will also install avahi which is an optional dependency. Avahi has a couple daemons that should be started at boot and stopped at shutdown. This can be done using `rc.local` and `rc.local_shutdown` scripts (this information is also in the Avahi README).
-
-Start the daemons with the following in `/etc/rc.d/rc.local`:
-```bash
-# Start avahidaemon
-if [ -x /etc/rc.d/rc.avahidaemon ]; then
- /etc/rc.d/rc.avahidaemon start
-fi
-# Start avahidnsconfd
-if [ -x /etc/rc.d/rc.avahidnsconfd ]; then
-  /etc/rc.d/rc.avahidnsconfd start
-fi
-```
-
-Stop the daemons with the following in `/etc/rc.d/rc.local_shutdown`:
-```bash
-# Stop avahidnsconfd
-if [ -x /etc/rc.d/rc.avahidnsconfd ]; then
-  /etc/rc.d/rc.avahidnsconfd stop
-fi
-# Stop avahidaemon
-if [ -x /etc/rc.d/rc.avahidaemon ]; then
-  /etc/rc.d/rc.avahidaemon stop
-fi
 ```
 
