@@ -1,4 +1,4 @@
-﻿# Gnome for Slackware 15.0
+# GNOME for Slackware 15.0
 ## Overview
 This project provides the GNOME desktop in "SlackBuild" format for use on Slackware 15.0.
 
@@ -22,7 +22,8 @@ Before starting either build you will need to create a 'colord' group and user, 
  useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
 ```
 
-After setting up the appropriate user and group as listed above, you can build and install the GNOME desktop from slackbuilds.org using the providied queuefiles. For example, the steps to build and install the gnome-all queue using 'sbopkg' would be as follows:
+
+After setting up the colord user and group, you can build and install the GNOME desktop from slackbuilds.org using the provided queuefiles. For example, the steps to build and install the gnome-all queue using 'sbopkg' would be as follows:
 ```bash
 wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-slackware-15.0/main/gnome-all.sqf
 sbopkg -i gnome-all
@@ -34,3 +35,4 @@ wget -P /var/lib/sbopkg/queues https://raw.githubusercontent.com/0xBOBF/gnome-sl
 sbopkg -i gnome-basic
 ```
 
+Upon completion of building the queuefile, you will have the GNOME desktop installed on your Slackware system. The recommended way to use GNOME is to boot into run level 4 and use the GDM display manager. You can also use 'startx' from run level 3, but in that case GDM will not be running and screen locking in the GNOME desktop will not work.
