@@ -10,13 +10,16 @@ compared to what is included in the gnome-core "meta package":
 
  * gnome-builder - Omitted due to the large number of deps it adds. 
                    It is available on slackbuilds.org, so users can
-                   easilly add it on themselves.
+                   easily add it on themselves.
 
- * gnome-software - A flatpak gui frontend. Adds a number of 
+ * gnome-software - A flatpak GUI front-end. Adds a number of 
                     dependencies and hasn't been uploaded to SBo.
 
- * gnome-boxes - A qemu/libvirt gui frontend. Adds a number of
+ * gnome-boxes - A qemu/libvirt GUI front-end. Adds a number of
                  dependencies and hasn't been uploaded to SBo.
+
+ * gnome-connections - GNOME Remote Desktop's client GUI. Omitted,
+                       since gnome-remote-desktop is omitted.
 
  * gnome-remote-desktop, - These three are user run daemons and makeup
    gnome-user-share,       the "sharing" panel in GNOME's control panel.
@@ -24,6 +27,16 @@ compared to what is included in the gnome-core "meta package":
                            yield broken controls in the panel when 
                            systemd is not installed.
                            Also not uploaded to SBo.
+
+ * gnome-tour,
+   gnome-initial-setup   - A couple basic gnome intro packages that are 
+                           run once and never used again. Omitted to
+                           reduce clutter.
+
+ * orca - GNOME's screen reader. The screen reader works on Slackware,
+          but no braille deps are met yet so omitted.
+
+ * sushi - A file previewer for Nautilus. Not uploaded to SBo yet.
 
  * epiphany - There is a build available on slackbuilds.org, but it is
               built against webkit2gtk-4.1 & libsoup3, while the rest
