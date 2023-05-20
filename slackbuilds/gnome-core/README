@@ -1,16 +1,30 @@
 The 'gnome-core' package is essentially an empty package that depends
 on *all* the packages that are part of the gnome-core distribution, 
-AND are available on slackbuilds.org.
+AND are available on slackbuilds.org. Building the gnome-core package
+and all its dependencies will install all the core components of a 
+GNOME Desktop release, e.g "GNOME Desktop 41.9".
 
-Note that the "gnome-core distribution" is the official collection of 
-software that makes up a GNOME desktop release, e.g "GNOME Desktop 41".
+Important Note: 'colord' is included as a dependency and requires a 
+colord group and user for the build to complete properly. Please add
+the colord group and user before starting the build, otherwise the 
+entire queue will fail to build once it reaches the colord step. The
+following code will add the colord group and user:
+
+ groupadd -g 303 colord
+ useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
+
+Booting to runlevel 4 will start the GNOME Display Manager, GDM, by
+default. This is the recommended way to use GNOME, so that GDM can 
+handle screen locking. Xinit scripts are provided as well, so that
+GNOME can be started from runlevel 3.
+
+This package also provides a list of all installed packages in the
+file: /usr/doc/gnome-core-$VERSION/gnome-core.list. This list is useful
+for finding and removing packages installed by the gnome-core meta
+package dependencies. See the gnome-core.list file for details.
 
 There are several omissions from the official gnome-core release, 
 compared to what is included in the gnome-core "meta package":
-
- * gnome-builder - Omitted due to the large number of deps it adds. 
-                   It is available on slackbuilds.org, so users can
-                   easily add it on themselves.
 
  * gnome-software - A flatpak GUI front-end. Adds a number of 
                     dependencies and hasn't been uploaded to SBo.
@@ -43,18 +57,4 @@ compared to what is included in the gnome-core "meta package":
               of the gnome-core 41 distribution is built against the
               older webkit2gtk-4.0 & libsoup2 libraries. The two can't
               be mixed and will cause crashes.
-
-This package also provides a list of all installed packages in the
-file: /usr/doc/gnome-core-$VERSION/gnome-core.list. This list is useful
-for finding and removing packages installed by the gnome-core meta
-package dependencies. See the gnome-core.list file for details.
-
-Important note: 'colord' is included as a dependency and requires a 
-colord group and user for the build to complete properly. Please add
-the colord group and user before starting the build, otherwise the 
-entire queue will fail to build once it reaches the colord step. The
-following code will add the colord group and user:
-
- groupadd -g 303 colord
- useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
 

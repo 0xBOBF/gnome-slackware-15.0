@@ -1,10 +1,18 @@
 PRGNAM="gnome-core"
 VERSION="41.9"
 HOMEPAGE="https://www.gnome.org/"
-DOWNLOAD=""
+DOWNLOAD="UNSUPPORTED"
 MD5SUM=""
-DOWNLOAD_x86_64=""
+DOWNLOAD_x86_64="UNSUPPORTED"
 MD5SUM_x86_64=""
-REQUIRES="%README% gnome-settings-daemon mutter cheese gnome-control-center gnome-shell gnome-session gdm gnome-tweaks nautilus gnome-shell-extensions gnome-browser-connector gnome-backgrounds yelp gnome-terminal gnome-system-monitor gnome-weather gnome-clocks gnome-disk-utility baobab simple-scan gnome-calendar gnome-calculator gedit evince file-roller gnome-maps gnome-photos seahorse gnome-screenshot catarell-fonts gnome-characters gnome-font-viewer gnome-contacts gnome-music totem gnome-builder"
+REQUIRES="%README% gnome-settings-daemon mutter cheese \
+gnome-control-center gnome-shell gnome-session gdm gnome-tweaks \
+nautilus gnome-shell-extensions gnome-browser-connector \
+gnome-backgrounds yelp gnome-terminal gnome-system-monitor \
+gnome-weather gnome-clocks gnome-disk-utility baobab simple-scan \
+gnome-calendar gnome-calculator gedit evince file-roller gnome-maps \
+gnome-photos seahorse gnome-screenshot cantarell-fonts \
+gnome-characters gnome-font-viewer gnome-contacts gnome-music totem \
+gnome-builder"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
