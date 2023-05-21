@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-connections/41/gnome-connecti
 MD5SUM="5d87f4a86c3d600b8ea18e40e51e4ff9"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="libhandy gtk-vnc"
+REQUIRES="gtk-vnc libhandy"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
