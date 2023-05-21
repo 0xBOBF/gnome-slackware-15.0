@@ -89,6 +89,7 @@ cd build
     --prefix=/usr \
     --sysconfdir=/etc \
     -Dsystemduserunitdir=no \
+    -Dmodules_path=/usr/lib${LIBDIRSUFFIX}/httpd/modules \
     -Dstrip=true
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install

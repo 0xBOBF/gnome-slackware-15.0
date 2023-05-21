@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/core/41/41.8/sources/gnome-user-share-3.34.
 MD5SUM="a3d983d0cf8357832229ff96172418d8"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="nautilus"
+REQUIRES="nautilus mod_dnssd"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
