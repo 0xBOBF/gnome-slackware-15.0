@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-software/41/gnome-software-41
 MD5SUM="21de2ae5606cc8a5fb432a0354d45e5b"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="AppStream fwupd flatpak valgrind"
+REQUIRES="AppStream flatpak gspell libhandy valgrind"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
