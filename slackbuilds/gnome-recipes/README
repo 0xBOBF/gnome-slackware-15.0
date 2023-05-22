@@ -1,9 +1,0 @@
-An easy-to-use application that will help you to discover what to cook
-today, tomorrow, the rest of the week and for your special occasions. 
-
-Optional Deps:
-These optional deps will automatically be picked up if they are 
-installed before building gnome-recipes:
-
-- gspell
-- gnome-autoar
