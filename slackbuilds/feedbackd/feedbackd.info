@@ -1,5 +1,5 @@
 PRGNAM="feedbackd"
-VERSION="v0.1.0"
+VERSION="0.1.0"
 HOMEPAGE="https://source.puri.sm/Librem5/feedbackd"
 DOWNLOAD="https://source.puri.sm/Librem5/feedbackd/-/archive/v0.1.0/feedbackd-v0.1.0.tar.gz \
 https://gitlab.gnome.org/guidog/gmobile/-/archive/v0.0.1/gmobile-v0.0.1.tar.gz"

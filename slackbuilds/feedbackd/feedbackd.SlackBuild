@@ -22,12 +22,18 @@
 #  OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# Note: gmobile is a subproject that will be git cloned during the build if not
+# present. Instead of allowing that to happen, we download the gmobile subproject 
+# with the slackbuild source files and patch/install it ourselves.
+
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=feedbackd
-PRGNAM2=gmobile
-VERSION=${VERSION:-v0.1.0}
-VERSION2=${VERSION2:-v0.0.1}
+VERSION=${VERSION:-0.1.0}
+SRCNAM1=$PRGNAM
+SRCVER1="v${VERSION}"
+SRCNAM2=gmobile
+SRCVER2="v0.0.1"
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -69,11 +75,12 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
+tar xvf $CWD/$SRCNAM1-$SRCVER1.tar.gz
+mv $SRCNAM1-$SRCVER1 $PRGNAM-$VERSION
 
 # Extract the gmobile subproject and move to its location:
-tar xvf $CWD/$PRGNAM2-$VERSION2.tar.gz
-cp -a $PRGNAM2-$VERSION2/* $PRGNAM-$VERSION/subprojects/gmobile/
+tar xvf $CWD/$SRCNAM2-$SRCVER2.tar.gz
+cp -a $SRCNAM2-$SRCVER2/* $PRGNAM-$VERSION/subprojects/gmobile/
 # Apply this commit from gmobile, which fixes building with older
 # glib2 versions, i.e. on Slackware 15.0:
 ( cd $PRGNAM-$VERSION/subprojects/gmobile && patch -Np1 -i $CWD/63cba7867147edfa2525ef85af667d48a6b0752e.diff )
