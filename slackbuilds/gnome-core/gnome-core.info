@@ -13,6 +13,6 @@ gnome-weather gnome-clocks gnome-disk-utility baobab simple-scan \
 gnome-calendar gnome-calculator gedit evince file-roller gnome-maps \
 gnome-photos seahorse gnome-screenshot cantarell-fonts \
 gnome-characters gnome-font-viewer gnome-contacts gnome-music totem \
-gnome-builder"
+devhelp gnome-builder zenity phodav eog webp-pixbuf-loader mm-common"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
