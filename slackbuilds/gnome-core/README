@@ -4,14 +4,22 @@ AND are available on slackbuilds.org. Building the gnome-core package
 and all its dependencies will install all the core components of a 
 GNOME Desktop release, e.g "GNOME Desktop 41.9".
 
-Important Note: 'colord' is included as a dependency and requires a 
-colord group and user for the build to complete properly. Please add
-the colord group and user before starting the build, otherwise the 
-entire queue will fail to build once it reaches the colord step. The
-following code will add the colord group and user:
+Important Note: 'colord' and 'avahi' are included as a dependencies 
+and require a colord and avahi group and user for the build to 
+complete properly. Please add the colord and avahi group and user before
+starting the build, otherwise the entire queue will fail to build once 
+it reaches the respective colord or avahi builds.
+
+The following code will add the colord and avahi group and user:
 
  groupadd -g 303 colord
  useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
+
+ groupadd -g 214 avahi
+ useradd -u 214 -g 214 -c "Avahi User" -d /dev/null -s /bin/false avahi
+
+Also note that to properly use Avahi, you will need to start/stop its
+daemons in /etc/rc.d. See the Avahi readmes for details.
 
 Booting to runlevel 4 will start the GNOME Display Manager, GDM, by
 default. This is the recommended way to use GNOME, so that GDM can 
@@ -26,31 +34,22 @@ package dependencies. See the gnome-core.list file for details.
 There are several omissions from the official gnome-core release, 
 compared to what is included in the gnome-core "meta package":
 
+ * gnome-logs - This is a system log viewer for the systemd journal,
+                and so is useless on a Slackware system.
+
  * gnome-software - A flatpak GUI front-end. Adds a number of 
                     dependencies and hasn't been uploaded to SBo.
 
- * gnome-boxes - A qemu/libvirt GUI front-end. Adds a number of
-                 dependencies and hasn't been uploaded to SBo.
+                    Doubles as a software updater via PackageKit, but
+                    the slackware implementation is broken, leaving 
+                    much of the UI non-functional.
 
- * gnome-connections - GNOME Remote Desktop's client GUI. Omitted,
-                       since gnome-remote-desktop is omitted.
+ * gnome-initial-setup - This is intended to be used on initial boot of
+                         a fresh installation, and does things like
+                         create new users and other system setup tasks.
 
- * gnome-remote-desktop, - These three are user run daemons and makeup
-   gnome-user-share,       the "sharing" panel in GNOME's control panel.
-   rygel                   They depend on systemd's service manager and 
-                           yield broken controls in the panel when 
-                           systemd is not installed.
-                           Also not uploaded to SBo.
-
- * gnome-tour,
-   gnome-initial-setup   - A couple basic gnome intro packages that are 
-                           run once and never used again. Omitted to
-                           reduce clutter.
-
- * orca - GNOME's screen reader. The screen reader works on Slackware,
-          but no braille deps are met yet so omitted.
-
- * sushi - A file previewer for Nautilus. Not uploaded to SBo yet.
+                         These things are normally done via Slackware's
+                         installer and adduser scripts, so do not use.
 
  * epiphany - There is a build available on slackbuilds.org, but it is
               built against webkit2gtk-4.1 & libsoup3, while the rest

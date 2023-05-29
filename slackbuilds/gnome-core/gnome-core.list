@@ -1,123 +1,173 @@
-# This is a list of all packages that are installed when installing the
-# 'gnome-core' meta package.
-#
-# You can use this list to help in finding and removing packages from
-# the gnome-core install. 
-#
-# E.g: The following will bring up slackpkg's handy curses dialog where
-# you can check off all or parts of the gnome-core install:
-#
-# source gnome-core.list
-# slackpkg remove $GNOME_CORE
-
-GNOME_CORE="BeautifulSoup4 \
-adobe-source-code-pro-font \
-baobab \
-blocaled \
-bubblewrap \
-cheese \
-clutter \
-clutter-gst \
-clutter-gtk \
-cogl \
-colord \
-colord-gtk \
-colord-gtk \
-cups-pk-helper \
-evince \
-evolution-data-server \
-exempi \
-file-roller \
-folks \
-functools-lru-cache \
-gdm \
-gedit \
-geoclue2 \
-geocode-glib \
-gfbgraph \
-gnome-autoar \
-gnome-backgrounds \
-gnome-bluetooth \
-gnome-browser-connector \
-gnome-calculator \
-gnome-calendar \
-gnome-characters \
-gnome-clocks \
-gnome-color-manager \
-gnome-contacts \
-gnome-control-center \
-gnome-core \
-gnome-desktop \
-gnome-disk-utility \
-gnome-font-viewer \
-gnome-maps \
-gnome-menus \
-gnome-music \
-gnome-online-accounts \
-gnome-photos \
-gnome-screenshot \
-gnome-session \
-gnome-settings-daemon \
-gnome-shell \
-gnome-shell-extensions \
-gnome-system-monitor \
-gnome-terminal \
-gnome-tweaks \
-gnome-video-effects \
-gnome-weather \
-grilo \
-grilo-plugins \
-gsound \
-gtksourceview4 \
-html5lib \
-jq \
-libchamplain \
-libdaemon \
-libdazzle \
-libgdata \
-libgnomekbd \
-libgusb \
-libgweather \
-libgweather4 \
-libgxps \
-libhandy \
-libiptcdata \
-libmediaart \
-liboauth \
-libosinfo \
-libpeas \
-libportal \
-libuchardet \
-libwpe \
-lua53 \
-lxml \
-mutter \
-nautilus \
-osinfo-db \
-osinfo-db-tools \
-p7zip \
-python-toml \
-python2-BeautifulSoup4 \
-python2-setuptools-scm \
-python2-soupsieve \
-python3-soupsieve \
-python3-webencodings \
-rest \
-seahorse \
-simple-scan \
-telepathy-glib \
-totem \
-totem-pl-parser \
-tracker \
-tracker-miners \
-uhttpmock \
-unifdef \
-webkit2gtk \
-wpebackend-fdo \
-xdg-dbus-proxy \
-xdg-desktop-portal-gnome \
-xdg-desktop-portal-gtk \
-xvfb-run \
-yelp \
-yelp-tools \
-yelp-xsl"
+BeautifulSoup4
+Sphinx
+adobe-source-code-pro-font
+alabaster
+appstream-glib
+avahi
+baobab
+blocaled
+bubblewrap
+callaudiod
+calls
+cantarell-fonts
+cheese
+clutter
+clutter-gst
+clutter-gtk
+cmark
+cogl
+colord
+colord-gtk
+cups-pk-helper
+devhelp
+eog
+evince
+evolution-data-server
+exempi
+feedbackd
+file-roller
+folks
+functools-lru-cache
+gcab
+gdm
+gedit
+geoclue2
+geocode-glib
+gfbgraph
+gi-docgen
+gnome-autoar
+gnome-backgrounds
+gnome-bluetooth
+gnome-boxes
+gnome-browser-connector
+gnome-builder
+gnome-calculator
+gnome-calendar
+gnome-characters
+gnome-clocks
+gnome-color-manager
+gnome-connections
+gnome-contacts
+gnome-control-center
+gnome-desktop
+gnome-disk-utility
+gnome-font-viewer
+gnome-maps
+gnome-menus
+gnome-music
+gnome-online-accounts
+gnome-photos
+gnome-remote-desktop
+gnome-screenshot
+gnome-session
+gnome-settings-daemon
+gnome-shell
+gnome-shell-extensions
+gnome-system-monitor
+gnome-terminal
+gnome-tour
+gnome-tweaks
+gnome-user-docs
+gnome-user-share
+gnome-video-effects
+gnome-weather
+gom
+grilo
+grilo-plugins
+gsound
+gspell
+gssdp
+gst-editing-services
+gtk-vnc
+gtksourceview4
+gupnp
+gupnp-av
+gupnp-dlna
+html5lib
+imagesize
+jq
+jsonrpc-glib
+libchamplain
+libdaemon
+libdazzle
+libgdata
+libgit2
+libgit2-glib
+libgnomekbd
+libgusb
+libgweather
+libgweather4
+libgxps
+libhandy
+libiptcdata
+libmediaart
+liboauth
+libosinfo
+libpeas
+libportal
+libsoup3
+libuchardet
+libvirt
+libvirt-glib
+libwpe
+lua53
+lxml
+mm-common
+mod_dnssd
+mutter
+nautilus
+nv-codec-headers
+orca
+osinfo-db
+osinfo-db-tools
+p7zip
+phodav
+pyatspi
+python-smartypants
+python-toml
+python2-BeautifulSoup4
+python2-setuptools-scm
+python2-soupsieve
+python3-babel
+python3-soupsieve
+python3-typogrify
+python3-webencodings
+pytz
+rest
+rygel
+seahorse
+simple-scan
+snowballstemmer
+sofia-sip
+sphinx-rtd-theme
+sphinxcontrib-applehelp
+sphinxcontrib-devhelp
+sphinxcontrib-htmlhelp
+sphinxcontrib-jsmath
+sphinxcontrib-qthelp
+sphinxcontrib-serializinghtml
+spice
+spice-gtk
+spice-protocol
+sushi
+sysprof
+telepathy-glib
+template-glib
+totem
+totem-pl-parser
+tracker
+tracker-miners
+uhttpmock
+unifdef
+webkit2gtk
+webp-pixbuf-loader
+wpebackend-fdo
+xdg-dbus-proxy
+xdg-desktop-portal-gnome
+xdg-desktop-portal-gtk
+xvfb-run
+yajl
+yelp
+yelp-tools
+yelp-xsl
+zenity
