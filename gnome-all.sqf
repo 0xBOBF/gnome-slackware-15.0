@@ -159,7 +159,6 @@ eog
 evince
 
 # Evolution email/calendar/organizer client:
-gspell
 cmark
 libpst
 lua53
