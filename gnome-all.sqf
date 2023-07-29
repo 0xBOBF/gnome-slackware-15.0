@@ -44,7 +44,7 @@ wpebackend-fdo
 bubblewrap
 unifdef
 webkit2gtk
-rest
+rest-legacy
 gnome-online-accounts
 cups-pk-helper
 gnome-color-manager
@@ -174,7 +174,6 @@ folks
 gnome-maps
 
 # GNOME Photos:
-#libsoup3 # Removed dep and forced grilo to use soup2. The whole stack needs one or the other, cannot mix soups!
 grilo
 gfbgraph
 gnome-photos
@@ -198,11 +197,8 @@ gnome-font-viewer
 gnome-color-manager
 
 # GNOME Connections:
-# Putting this one off for the gnome-41 release, due to difficulty
-# separating gnome-remote-desktop from systemd. Will get better in
-# later releases.
-#gtk-vnc
-#gnome-connections
+gtk-vnc
+gnome-connections
 
 # GNOME Contacts:
 gnome-contacts
@@ -213,43 +209,37 @@ grilo-plugins
 gnome-music
 
 # GNOME Remote Desktop:
-# Putting this one off for the gnome-41 release, due to difficulty
-# separating gnome-remote-desktop from systemd. Will get better in
-# later releases.
-#nv-codec-headers
-#gnome-remote-desktop
+nv-codec-headers
+gnome-remote-desktop
 
 # GNOME Videos:
-# Requires newer version of totem-pl-parser.
 totem
 
 # GNOME Tour:
-# Do we "need" this?
-#gnome-tour
+gnome-tour
 
 # GNOME User Share (runtime needs avahi)
-# Not submitting, due to user daemon management requirements.
-#gnome-user-share
+gnome-user-share
 
 # Rygel and deps:
-# Not submitting, due to user daemon management requirements.
-#  gssdp # On SBo
-# gupnp # On SBo
-# gupnp-av # Added a build
-# gupnp-dlna # Added a build
-# gst-editing-services # On SBo
-#rygel
+gssdp
+gupnp
+gupnp-av
+gupnp-dlna
+gst-editing-services
+rygel
 
 # Orca:
-# Skipping for now. Maybe someone else wants to maintain this and submit all the braille deps.
-#orca
+orca
 
 # Sushi
-# Skipping for now. Does it even do anything noticable?
-#sushi
+sushi
 
 # Epiphany:
-# epiphany # Version on SBo fails to build, due to requiring newer libportal, also its 43.0, needing webkit2gtk4.1
+# Omitting for now, due to the additional webkit build and overwritten WebDriver
+#libsoup3
+#webkit2gtk4.1
+#epiphany
 
 # GNOME Boxes:
 #libosinfo
