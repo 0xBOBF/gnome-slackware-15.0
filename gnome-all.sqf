@@ -146,6 +146,9 @@ gnome-calculator
 
 # gedit is an editor for GNOME:
 libpeas
+amtk
+tepl
+gspell
 gedit
 
 # Eye of Gnome image viewer:
@@ -218,22 +221,25 @@ totem
 # GNOME Tour:
 gnome-tour
 
+# Orca:
+orca
+
+# Sushi
+sushi
+
 # GNOME User Share (runtime needs avahi)
-gnome-user-share
+#avahi
+#mod_dnssd
+#gnome-user-share
 
 # Rygel and deps:
+libsoup3
 gssdp
 gupnp
 gupnp-av
 gupnp-dlna
 gst-editing-services
 rygel
-
-# Orca:
-orca
-
-# Sushi
-sushi
 
 # Epiphany:
 # Omitting for now, due to the additional webkit build and overwritten WebDriver
