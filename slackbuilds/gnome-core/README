@@ -4,22 +4,22 @@ AND are available on slackbuilds.org. Building the gnome-core package
 and all its dependencies will install all the core components of a 
 GNOME Desktop release, e.g "GNOME Desktop 41.9".
 
-Important Note: 'colord' and 'avahi' are included as a dependencies 
-and require a colord and avahi group and user for the build to 
-complete properly. Please add the colord and avahi group and user before
-starting the build, otherwise the entire queue will fail to build once 
-it reaches the respective colord or avahi builds.
+Important Note: 'colord' and 'avahi' are included as dependencies
+and require 'colord' and 'avahi' groups and users for the build to
+complete properly. Please add the colord and avahi groups and users
+before starting the build, otherwise the entire queue will fail to
+build once it reaches the respective colord or avahi builds.
 
 The following code will add the colord and avahi group and user:
-
- groupadd -g 303 colord
- useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
-
- groupadd -g 214 avahi
- useradd -u 214 -g 214 -c "Avahi User" -d /dev/null -s /bin/false avahi
+ 
+  groupadd -g 303 colord
+  useradd -d /var/lib/colord -u 303 -g colord -s /bin/false colord
+ 
+  groupadd -g 214 avahi
+  useradd -u 214 -g 214 -c "Avahi User" -d /dev/null -s /bin/false avahi
 
 Also note that to properly use Avahi, you will need to start/stop its
-daemons in /etc/rc.d. See the Avahi readmes for details.
+daemons in /etc/rc.d. See the Avahi READMEs for details.
 
 Booting to runlevel 4 will start the GNOME Display Manager, GDM, by
 default. This is the recommended way to use GNOME, so that GDM can 
@@ -34,26 +34,20 @@ package dependencies. See the gnome-core.list file for details.
 There are several omissions from the official gnome-core release, 
 compared to what is included in the gnome-core "meta package":
 
- * gnome-logs - This is a system log viewer for the systemd journal,
-                and so is useless on a Slackware system.
+ * gnome-software - A flatpak GUI front-end combined with a package
+                    manager. Not uploaded due to non-functional 
+                    package manager features.
 
- * gnome-software - A flatpak GUI front-end. Adds a number of 
-                    dependencies and hasn't been uploaded to SBo.
+ * gnome-initial-setup - Does sysadmin tasks via a gui on first boot.
+                         Leaving this out due to existing methods to
+                         doing these tasks.
 
-                    Doubles as a software updater via PackageKit, but
-                    the slackware implementation is broken, leaving 
-                    much of the UI non-functional.
-
- * gnome-initial-setup - This is intended to be used on initial boot of
-                         a fresh installation, and does things like
-                         create new users and other system setup tasks.
-
-                         These things are normally done via Slackware's
-                         installer and adduser scripts, so do not use.
+ * gnome-logs - A journald viewer, which has no use on stock Slackware.
 
  * epiphany - There is a build available on slackbuilds.org, but it is
               built against webkit2gtk-4.1 & libsoup3, while the rest
               of the gnome-core 41 distribution is built against the
-              older webkit2gtk-4.0 & libsoup2 libraries. The two can't
-              be mixed and will cause crashes.
+              older webkit2gtk-4.0 & libsoup2 libraries. If you want to
+              install epiphany then install webkit2gtk-4.1 and epiphany
+              after completing the gnome-core build.
 
