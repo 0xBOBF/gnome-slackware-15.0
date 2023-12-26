@@ -146,7 +146,8 @@ gnome-calculator
 
 # gedit is an editor for GNOME:
 libpeas
-amtk
+libgedit-gtksourceview
+libgedit-amtk
 tepl
 gspell
 gedit
