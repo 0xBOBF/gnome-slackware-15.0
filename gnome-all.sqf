@@ -110,7 +110,23 @@ gnome-browser-connector
 gnome-backgrounds
 
 # Yelp:
-lxml
+python3-flit_core
+python3-installer
+python3-pyproject-hooks
+python3-wheel
+python3-build
+python3-calver
+python3-trove-classifiers
+python3-pluggy
+python3-pathspec
+python3-editables
+python3-hatchling
+python3-webencodings
+python3-soupsieve
+python3-cssselect
+html5lib
+BeautifulSoup4
+python3-lxml
 yelp-xsl
 yelp-tools
 yelp
