@@ -18,7 +18,6 @@ libgweather
 gnome-settings-daemon
 
 # Mutter Compositor:
-xvfb-run
 mutter
 
 # GNOME Control Center and deps:

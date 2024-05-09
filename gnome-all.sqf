@@ -20,7 +20,6 @@ gnome-settings-daemon
 
 # Mutter compositor:
 zenity
-xvfb-run
 mutter
 
 # Cheese is GNOME's webcam application:
@@ -167,6 +166,7 @@ libgedit-amtk
 tepl
 gspell
 gedit
+gedit-plugins
 
 # Eye of Gnome image viewer:
 # Requires a patch to allow building against newer libportal versions.
