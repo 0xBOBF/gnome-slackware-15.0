@@ -212,9 +212,6 @@ gnome-characters
 # GNOME Font Viewer:
 gnome-font-viewer
 
-# GNOME color profile manager:
-gnome-color-manager
-
 # GNOME Connections:
 gtk-vnc
 gnome-connections
@@ -238,6 +235,7 @@ totem
 gnome-tour
 
 # Orca:
+pyatspi
 orca
 
 # Sushi
