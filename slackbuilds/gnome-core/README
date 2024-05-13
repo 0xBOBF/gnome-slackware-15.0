@@ -27,9 +27,9 @@ handle screen locking. Xinit scripts are provided as well, so that
 GNOME can be started from runlevel 3.
 
 This package also provides a list of all installed packages in the
-file: /usr/doc/gnome-core-$VERSION/gnome-core.list. This list is useful
-for finding and removing packages installed by the gnome-core meta
-package dependencies. See the gnome-core.list file for details.
+file: /usr/doc/gnome-core-$VERSION/gnome-core.pkglist. This list is 
+useful for finding and removing packages installed by the gnome-core 
+meta package dependencies. See the gnome-core.pkglist file for details.
 
 There are several omissions from the official gnome-core release, 
 compared to what is included in the gnome-core "meta package":

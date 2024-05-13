@@ -1,3 +1,5 @@
+# The following is a list of packages that get installed when resolving
+# the dependencies of the gnome-core package:
 BeautifulSoup4
 Sphinx
 adobe-source-code-pro-font
@@ -19,7 +21,6 @@ cogl
 colord
 colord-gtk
 cups-pk-helper
-devhelp
 eog
 evince
 evolution-data-server
@@ -27,10 +28,10 @@ exempi
 feedbackd
 file-roller
 folks
-functools-lru-cache
 gcab
 gdm
 gedit
+gedit-plugins
 geoclue2
 geocode-glib
 gfbgraph
@@ -49,6 +50,7 @@ gnome-color-manager
 gnome-connections
 gnome-contacts
 gnome-control-center
+gnome-core
 gnome-desktop
 gnome-disk-utility
 gnome-font-viewer
@@ -62,6 +64,7 @@ gnome-screenshot
 gnome-session
 gnome-settings-daemon
 gnome-shell
+gnome-shell-extension-appindicator
 gnome-shell-extensions
 gnome-system-monitor
 gnome-terminal
@@ -76,13 +79,8 @@ grilo
 grilo-plugins
 gsound
 gspell
-gssdp
-gst-editing-services
 gtk-vnc
 gtksourceview4
-gupnp
-gupnp-av
-gupnp-dlna
 html5lib
 imagesize
 jq
@@ -91,6 +89,8 @@ libchamplain
 libdaemon
 libdazzle
 libgdata
+libgedit-amtk
+libgedit-gtksourceview
 libgit2
 libgit2-glib
 libgnomekbd
@@ -105,14 +105,11 @@ liboauth
 libosinfo
 libpeas
 libportal
-libsoup3
 libuchardet
 libvirt
 libvirt-glib
 libwpe
 lua53
-lxml
-mm-common
 mod_dnssd
 mutter
 nautilus
@@ -121,20 +118,31 @@ orca
 osinfo-db
 osinfo-db-tools
 p7zip
-phodav
 pyatspi
+python-importlib_metadata
 python-smartypants
-python-toml
-python2-BeautifulSoup4
-python2-setuptools-scm
-python2-soupsieve
+python-zipp
 python3-babel
+python3-build
+python3-calver
+python3-cssselect
+python3-editables
+python3-flit_core
+python3-hatchling
+python3-installer
+python3-lxml
+python3-pathspec
+python3-pluggy
+python3-pyproject-hooks
+python3-setuptools-opt
 python3-soupsieve
+python3-toml
+python3-trove-classifiers
 python3-typogrify
 python3-webencodings
+python3-wheel
 pytz
-rest
-rygel
+rest-legacy
 seahorse
 simple-scan
 snowballstemmer
@@ -143,6 +151,7 @@ sphinx-rtd-theme
 sphinxcontrib-applehelp
 sphinxcontrib-devhelp
 sphinxcontrib-htmlhelp
+sphinxcontrib-jquery
 sphinxcontrib-jsmath
 sphinxcontrib-qthelp
 sphinxcontrib-serializinghtml
@@ -153,6 +162,7 @@ sushi
 sysprof
 telepathy-glib
 template-glib
+tepl
 totem
 totem-pl-parser
 tracker

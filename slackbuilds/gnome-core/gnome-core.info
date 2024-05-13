@@ -5,16 +5,56 @@ DOWNLOAD="UNSUPPORTED"
 MD5SUM=""
 DOWNLOAD_x86_64="UNSUPPORTED"
 MD5SUM_x86_64=""
-REQUIRES="%README% gnome-settings-daemon mutter cheese \
-gnome-control-center gnome-shell gnome-session gdm gnome-tweaks \
-nautilus gnome-shell-extensions gnome-browser-connector \
-gnome-backgrounds yelp gnome-terminal gnome-system-monitor \
-gnome-weather gnome-clocks gnome-disk-utility baobab simple-scan \
-gnome-calendar gnome-calculator gedit evince file-roller gnome-maps \
-gnome-photos seahorse gnome-screenshot cantarell-fonts \
-gnome-characters gnome-font-viewer gnome-contacts gnome-music totem \
-devhelp gnome-builder zenity phodav eog webp-pixbuf-loader mm-common \
-orca rygel gnome-tour gnome-connections gnome-boxes gnome-user-share \
-gnome-remote-desktop sushi gnome-user-docs calls"
+REQUIRES="%README% \
+gnome-settings-daemon \
+mutter \
+cheese \
+gnome-control-center \
+gnome-shell \
+gnome-session \
+gdm \
+gnome-tweaks \
+nautilus \
+gnome-shell-extensions \
+gnome-browser-connector \
+gnome-backgrounds \
+yelp \
+gnome-terminal \
+gnome-system-monitor \
+gnome-weather \
+gnome-clocks \
+gnome-disk-utility \
+baobab \
+simple-scan \
+gnome-calendar \
+gnome-calculator \
+gedit-plugins \
+eog \
+evince \
+evoloution \
+file-roller \
+gnome-maps \
+gnome-photos \
+seahorse \
+gnome-screenshot \
+cantarell-fonts \
+gnome-characters \
+gnome-font-viewer \
+gnome-contacts \
+gnome-music \
+gnome-remote-desktop \
+gnome-connections \
+totem \
+gnome-tour \
+orca \
+sushi \
+gnome-shell-extension-appindicator \
+gnome-user-share \
+gnome-boxes \
+gnome-builder \
+zenity \
+webp-pixbuf-loader \
+gnome-user-docs \
+calls"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
