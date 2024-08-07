@@ -1,0 +1,24 @@
+diff -Naur gnome-shell-41.9.orig/js/portalHelper/main.js gnome-shell-41.9/js/portalHelper/main.js
+--- gnome-shell-41.9.orig/js/portalHelper/main.js	2024-08-07 00:35:01.340492292 -0000
++++ gnome-shell-41.9/js/portalHelper/main.js	2024-08-07 00:35:22.563489661 -0000
+@@ -1,7 +1,7 @@
+ /* exported main */
+ imports.gi.versions.Pango = '1.0';
+ imports.gi.versions.Gtk = '3.0';
+-imports.gi.versions.WebKit2 = '4.0';
++imports.gi.versions.WebKit2 = '4.1';
+ 
+ const Format = imports.format;
+ const Gettext = imports.gettext;
+diff -Naur gnome-shell-41.9.orig/js/ui/environment.js gnome-shell-41.9/js/ui/environment.js
+--- gnome-shell-41.9.orig/js/ui/environment.js	2024-08-07 00:35:01.342492292 -0000
++++ gnome-shell-41.9/js/ui/environment.js	2024-08-07 00:44:55.226787175 -0000
+@@ -19,7 +19,7 @@
+ imports.gi.versions.GnomeDesktop = '3.0';
+ imports.gi.versions.Graphene = '1.0';
+ imports.gi.versions.Gtk = '3.0';
+-imports.gi.versions.GWeather = '3.0';
++imports.gi.versions.GWeather = '4.0';
+ imports.gi.versions.IBus = '1.0';
+ imports.gi.versions.Malcontent = '0';
+ imports.gi.versions.NM = '1.0';

@@ -37,7 +37,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=gnome-shell
 VERSION=${VERSION:-41.9}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -132,6 +132,9 @@ find -L . -prune -name 'subprojects/gvc/.gitlab-ci' \
 # Patch meson.build to allow gsettings-desktop-schemas-40.0:
 patch -Np1 -i $CWD/0001-build-with-gsettings-desktop-schemas-40.patch
 
+# Patch to use webkit2gtk4.1 instead of webkit2gtk4.0:
+patch -Np1 -i $CWD/switch_to_webkit2gtk4.1.patch
+
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
@@ -147,7 +150,8 @@ cd build
     --sysconfdir=/etc \
     -Dstrip=true \
     -Dsystemd=false \
-    -Dtests=false
+    -Dtests=false \
+    -Dsoup2=false
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
 cd ..
