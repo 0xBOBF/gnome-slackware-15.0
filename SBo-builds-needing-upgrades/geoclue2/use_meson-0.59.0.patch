@@ -1,0 +1,23 @@
+diff -Naur geoclue-2.7.1.orig/data/meson.build geoclue-2.7.1/data/meson.build
+--- geoclue-2.7.1.orig/data/meson.build	2024-08-06 15:34:33.668836112 -0000
++++ geoclue-2.7.1/data/meson.build	2024-08-06 15:43:10.892665587 -0000
+@@ -19,8 +19,8 @@
+     conf.set('dbus_srv_user', get_option('dbus-srv-user'))
+     conf.set('sysconfdir', sysconfdir)
+ 
+-    confd_dir = join_paths(conf_dir, 'conf.d')
+-    install_emptydir(confd_dir)
++    #confd_dir = join_paths(conf_dir, 'conf.d')
++    #install_emptydir(confd_dir)
+ 
+     service_dir = join_paths(datadir, 'dbus-1', 'system-services')
+     configure_file(output: 'org.freedesktop.GeoClue2.service',
+diff -Naur geoclue-2.7.1.orig/meson.build geoclue-2.7.1/meson.build
+--- geoclue-2.7.1.orig/meson.build	2024-08-06 15:34:33.671836111 -0000
++++ geoclue-2.7.1/meson.build	2024-08-06 15:34:52.658830086 -0000
+@@ -1,4 +1,4 @@
+-project('geoclue', 'c', version: '2.7.1', meson_version : '>= 0.60.0')
++project('geoclue', 'c', version: '2.7.1', meson_version : '>= 0.59.4')
+ 
+ gclue_version = meson.project_version()
+ ver_arr = gclue_version.split('.')
