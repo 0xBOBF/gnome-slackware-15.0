@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-calendar/41/gnome-calendar-41
 MD5SUM="18eafea91633d2cc1658301858b77c51"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="evolution-data-server libdazzle libhandy libgweather"
+REQUIRES="evolution-data-server libdazzle libhandy libgweather4"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
