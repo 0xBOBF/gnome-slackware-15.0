@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=gnome-settings-daemon
 VERSION=${VERSION:-41.0}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -79,6 +79,14 @@ find -L . -prune -name 'subprojects/gvc/.gitlab-ci' \
 # Patch plugins/{power,wacom}/meson.build to drop unused argument,
 # which causes a build fail in meson vesions 0.60.0 or later:
 patch -Np1 -i $CWD/afa7e4bb9c519e2daf500a6079088669500768c0.patch
+
+# The following libgweather and geocode-glib patches are applied to
+# allow dropping libsoup2 from the gnome stack:
+# Patches to use libgweather-4.0:
+patch -Np1 -i $CWD/66cae69ad82cfc59435016fba737ce046ffb7e66.patch
+patch -Np1 -i $CWD/f390e6e9d56ce7d3e3a725b8204d81c0b6240515.patch
+# Patch to use newer geocode-glib:
+patch -Np1 -i $CWD/geocode-glib.patch
 
 mkdir build
 cd build

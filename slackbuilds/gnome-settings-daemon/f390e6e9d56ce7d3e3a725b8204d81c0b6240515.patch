@@ -1,0 +1,26 @@
+From f390e6e9d56ce7d3e3a725b8204d81c0b6240515 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Javier=20Jard=C3=B3n?= <jjardon@gnome.org>
+Date: Tue, 4 Jan 2022 00:50:17 +0000
+Subject: [PATCH] plugins/datetime/weather-tz.c: Use g_object_ref() instead
+ gweather_location_ref()
+
+---
+ plugins/datetime/weather-tz.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/plugins/datetime/weather-tz.c b/plugins/datetime/weather-tz.c
+index b76a2b8ca..f2d38d965 100644
+--- a/plugins/datetime/weather-tz.c
++++ b/plugins/datetime/weather-tz.c
+@@ -32,7 +32,7 @@ location_get_cities (GWeatherLocation *parent_location)
+ 
+         while ((child = gweather_location_next_child (parent_location, child))) {
+                 if (gweather_location_get_level (child) == GWEATHER_LOCATION_CITY) {
+-                        cities = g_list_prepend (cities, gweather_location_ref (child));
++                        cities = g_list_prepend (cities, g_object_ref (child));
+                 } else {
+                         cities = g_list_concat (cities,
+                                                 location_get_cities (child));
+-- 
+GitLab
+

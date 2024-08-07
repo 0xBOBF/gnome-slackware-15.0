@@ -1,0 +1,59 @@
+From 66cae69ad82cfc59435016fba737ce046ffb7e66 Mon Sep 17 00:00:00 2001
+From: Emmanuele Bassi <ebassi@gnome.org>
+Date: Fri, 31 Dec 2021 17:02:21 +0000
+Subject: [PATCH] Port to GWeather 4
+
+Use the new GWeather major version.
+
+The only change consists in replacing GWeatherTimezone with GTimeZone.
+---
+ meson.build                   | 2 +-
+ plugins/datetime/weather-tz.c | 5 +++--
+ 2 files changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 58b622acf..85f767f0b 100644
+--- a/meson.build
++++ b/meson.build
+@@ -96,7 +96,7 @@ gnome_desktop_dep = dependency('gnome-desktop-3.0', version: '>= 3.37.1')
+ gsettings_desktop_dep = dependency('gsettings-desktop-schemas', version: '>= 42')
+ gtk_dep = dependency('gtk+-3.0', version: '>= 3.15.3')
+ gtk_x11_dep = dependency('gtk+-x11-3.0')
+-gweather_dep = dependency('gweather-3.0', version: '>= 40.alpha')
++gweather_dep = dependency('gweather4')
+ lcms_dep = dependency('lcms2', version: '>= 2.2')
+ libcanberra_gtk_dep = dependency('libcanberra-gtk3')
+ libgeoclue_dep = dependency('libgeoclue-2.0', version: '>= 2.3.1')
+diff --git a/plugins/datetime/weather-tz.c b/plugins/datetime/weather-tz.c
+index 2eac90a2d..b76a2b8ca 100644
+--- a/plugins/datetime/weather-tz.c
++++ b/plugins/datetime/weather-tz.c
+@@ -22,7 +22,6 @@
+ #include "weather-tz.h"
+ #include "tz.h"
+ 
+-#define GWEATHER_I_KNOW_THIS_IS_UNSTABLE
+ #include <libgweather/gweather.h>
+ 
+ static GList *
+@@ -65,6 +64,7 @@ load_timezones (GList *cities)
+                 TzLocation *loc;
+                 const gchar *country;
+                 const gchar *timezone_id;
++                GTimeZone *tz;
+                 gdouble latitude;
+                 gdouble longitude;
+ 
+@@ -77,7 +77,8 @@ load_timezones (GList *cities)
+                 }
+ 
+                 country = gweather_location_get_country (l->data);
+-                timezone_id = gweather_timezone_get_tzid (gweather_location_get_timezone (l->data));
++                tz = gweather_location_get_timezone (l->data);
++                timezone_id = g_time_zone_get_identifier (tz);
+                 gweather_location_get_coords (l->data,
+                                               &latitude,
+                                               &longitude);
+-- 
+GitLab
+
