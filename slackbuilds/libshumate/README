@@ -1,0 +1,9 @@
+libshumate is a C library providing a GtkWidget to display maps. It
+supports numerous free map sources such as OpenStreetMap, 
+OpenCycleMap, OpenAerialMap and Maps for free.
+
+libshumate is named after Jessamine Shumate, an American artist, 
+historian, and cartographer (Wikipedia). libshumate is forked from, 
+and tries to follow similar principles in the API as libchamplain. 
+The library is as of now still in early development. 
+
