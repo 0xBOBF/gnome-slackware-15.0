@@ -1,0 +1,9 @@
+The following are failing to build with soup3 patching:
+slackbuilds/gnome-calendar
+slackbuilds/gnome-clocks
+SBo-builds-needing-upgrades/evolution
+
+The gnome-all and gnome-basic queues will need to be revised to account for new dependencies.
+
+SBo-builds-needing-upgrades/ are other maintainers projects, which all need to be coordinated with the rest of these upgrades.
+
