@@ -1,0 +1,48 @@
+diff -Naur gnome-builder-42.1.orig/meson.build gnome-builder-42.1/meson.build
+--- gnome-builder-42.1.orig/meson.build	2024-08-07 02:37:39.201797661 -0000
++++ gnome-builder-42.1/meson.build	2024-08-07 02:38:03.966801079 -0000
+@@ -292,7 +292,7 @@
+ libxml2_dep = dependency('libxml-2.0', version: '>= 2.9.0')
+ 
+ if get_option('webkit').enabled()
+-  libwebkit_dep = dependency('webkit2gtk-4.0', version: '>= 2.26')
++  libwebkit_dep = dependency('webkit2gtk-4.1', version: '>= 2.26')
+   config_h.set10('HAVE_WEBKIT', 1)
+ endif
+ 
+diff -Naur gnome-builder-42.1.orig/src/libide/gui/ide-application-plugins.c gnome-builder-42.1/src/libide/gui/ide-application-plugins.c
+--- gnome-builder-42.1.orig/src/libide/gui/ide-application-plugins.c	2024-08-07 02:37:39.229797665 -0000
++++ gnome-builder-42.1/src/libide/gui/ide-application-plugins.c	2024-08-07 02:39:18.650812101 -0000
+@@ -423,7 +423,7 @@
+       !g_irepository_require (NULL, "Jsonrpc", "1.0", 0, &error) ||
+       !g_irepository_require (NULL, "Template", "1.0", 0, &error) ||
+ #ifdef HAVE_WEBKIT
+-      !g_irepository_require (NULL, "WebKit2", "4.0", 0, &error) ||
++      !g_irepository_require (NULL, "WebKit2", "4.1", 0, &error) ||
+ #endif
+       !g_irepository_require (NULL, "Ide", PACKAGE_ABI_S, 0, &error))
+     g_critical ("Cannot enable Python 3 plugins: %s", error->message);
+diff -Naur gnome-builder-42.1.orig/src/libide/webkit/ide-webkit-plugin.c gnome-builder-42.1/src/libide/webkit/ide-webkit-plugin.c
+--- gnome-builder-42.1.orig/src/libide/webkit/ide-webkit-plugin.c	2024-08-07 02:37:39.253797668 -0000
++++ gnome-builder-42.1/src/libide/webkit/ide-webkit-plugin.c	2024-08-07 02:39:49.857817005 -0000
+@@ -34,7 +34,7 @@
+   WebKitWebContext *context;
+ 
+   g_type_ensure (WEBKIT_TYPE_WEB_VIEW);
+-  g_irepository_require (NULL, "WebKit2", "4.0", 0, NULL);
++  g_irepository_require (NULL, "WebKit2", "4.1", 0, NULL);
+ 
+   context = webkit_web_context_get_default ();
+   webkit_web_context_set_sandbox_enabled (context, TRUE);
+diff -Naur gnome-builder-42.1.orig/src/plugins/rust-analyzer/meson.build gnome-builder-42.1/src/plugins/rust-analyzer/meson.build
+--- gnome-builder-42.1.orig/src/plugins/rust-analyzer/meson.build	2024-08-07 02:37:39.335797679 -0000
++++ gnome-builder-42.1/src/plugins/rust-analyzer/meson.build	2024-08-07 02:38:33.531805318 -0000
+@@ -1,7 +1,7 @@
+ if get_option('plugin_rust_analyzer')
+ 
+ plugins_deps += [
+-  dependency('libsoup-2.4'),
++  dependency('libsoup-3.0'),
+ ]
+ 
+ plugins_sources += files([
