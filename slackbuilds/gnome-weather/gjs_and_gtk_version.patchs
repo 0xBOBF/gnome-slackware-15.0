@@ -1,0 +1,14 @@
+diff -Naur gnome-weather-42.0.orig/meson.build gnome-weather-42.0/meson.build
+--- gnome-weather-42.0.orig/meson.build	2024-08-06 17:57:57.778123229 -0000
++++ gnome-weather-42.0/meson.build	2024-08-06 18:00:12.722115989 -0000
+@@ -9,8 +9,8 @@
+ 
+ dependency('glib-2.0')
+ dependency('gobject-introspection-1.0', version: '>=1.35.9')
+-dependency('gtk4', version :'>=4.5')
+-dependency('gjs-1.0', version: '>= 1.71.0')
++dependency('gtk4', version :'>=4.4')
++dependency('gjs-1.0', version: '>= 1.70.0')
+ dependency('geoclue-2.0', version: '>= 0.12.99')
+ dependency('libadwaita-1')
+ dependency('gweather4', version: '>= 3.90.0')

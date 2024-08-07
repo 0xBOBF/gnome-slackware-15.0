@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=gnome-weather
-VERSION=${VERSION:-41.0}
+VERSION=${VERSION:-42.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -76,9 +76,8 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# Patch data/meson.build to remove positional argument that causes
-# FTB with meson 0.60.0 or newer (i.e. fixes building on -current):
-patch -Np1 -i $CWD/4be71525f07189e97720688472172604879d49a5.patch
+# Patch to allow building with gjs-1.70.0 and gtk-4.4:
+patch -Np1 -i $CWD/gjs_and_gtk_version.patchs
 
 mkdir build
 cd build
