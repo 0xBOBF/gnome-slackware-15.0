@@ -31,11 +31,11 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=grilo
 VERSION=${VERSION:-0.3.15}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_SBo}	
 PKGTYPE=${PKGTYPE:-tgz}
 
-SOUP3=${SOUP3:-false}
+SOUP3=${SOUP3:-true}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
