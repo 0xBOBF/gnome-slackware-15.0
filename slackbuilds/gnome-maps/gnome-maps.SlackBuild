@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=gnome-maps
-VERSION=${VERSION:-42.3}
+VERSION=${VERSION:-43.7}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -76,6 +76,11 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+# Patch to allow using older meson version by removing the 
+# newer 'install_symlink' function. We will do this manually
+# later in the slackbuild:
+patch -Np1 -i $CWD/use_meson-0.59.0.patch
+
 mkdir build
 cd build
   CFLAGS="$SLKCFLAGS" \
@@ -95,6 +100,11 @@ cd ..
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+
+# Create the symlink that the removed meson function 
+# 'install_symlink' would have created:
+mkdir $PKG/usr/bin
+( cd $PKG/usr/bin && ln -s ../share/gnome-maps/org.gnome.Maps gnome-maps )
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \

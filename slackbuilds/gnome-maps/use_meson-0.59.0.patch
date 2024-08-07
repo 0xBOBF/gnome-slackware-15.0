@@ -1,0 +1,32 @@
+diff -Naur gnome-maps-43.7.orig/meson.build gnome-maps-43.7/meson.build
+--- gnome-maps-43.7.orig/meson.build	2024-08-06 21:50:22.859008929 -0000
++++ gnome-maps-43.7/meson.build	2024-08-06 21:50:34.214028814 -0000
+@@ -1,7 +1,7 @@
+ project('gnome-maps', 'c',
+ 	version: '43.7',
+ 	license: 'GPL-2.0-or-later',
+-	meson_version: '>= 0.61.0',
++	meson_version: '>= 0.59.0',
+ )
+ 
+ app_id = 'org.gnome.Maps'
+diff -Naur gnome-maps-43.7.orig/src/meson.build gnome-maps-43.7/src/meson.build
+--- gnome-maps-43.7.orig/src/meson.build	2024-08-06 21:50:22.920009036 -0000
++++ gnome-maps-43.7/src/meson.build	2024-08-06 22:08:05.810500945 -0000
+@@ -21,11 +21,11 @@
+ 	install_dir: pkgdatadir
+ )
+ 
+-install_symlink(
+-	'gnome-maps',
+-	install_dir: bindir,
+-	pointing_to: pkgdatadir / app_id,
+-)
++#install_symlink(
++#	'gnome-maps',
++#	install_dir: bindir,
++#	pointing_to: pkgdatadir / app_id,
++#)
+ 
+ sources_conf = configuration_data()
+ sources_conf.set('suffix', suffix)
