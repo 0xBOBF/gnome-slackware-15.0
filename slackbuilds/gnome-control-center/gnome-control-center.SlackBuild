@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=gnome-control-center
 VERSION=${VERSION:-41.7}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-3}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -75,6 +75,9 @@ find -L . -prune -name 'subprojects/gvc/.gitlab-ci' \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# Patch to remove dependency on libsoup2:
+patch -Np1 -i $CWD/a9c398e5d9d45fb4638b38d6bb3f677a2b12b249.patch
 
 # Detect if cheese is installed and disable cheese support if not present:
 if ( pkg-config --exists cheese); then
