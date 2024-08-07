@@ -26,7 +26,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=gnome-calendar
 VERSION=${VERSION:-41.2}
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -79,6 +79,10 @@ find -L . \
 # Patch data/appdata/meson.build to fix building on newer meson versions
 # that error on unused positional arguments (i.e. fix building on -current):
 patch -Np1 -i $CWD/e35dbc1acd03dd1751b755b6c8e1932a692ad4e1.patch
+
+# Port the gnome-calendar-41.2 build to libsoup3 , gweather4,
+# and geocode-glib2 using upstreams patches:
+patch -Np1 -i $CWD/port_to_libsoup3_gweather4_geocode-glib2.patch
 
 mkdir build
 cd build

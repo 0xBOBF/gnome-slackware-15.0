@@ -1,5 +1,4 @@
 The following are failing to build with soup3 patching:
-slackbuilds/gnome-calendar
 slackbuilds/gnome-clocks
 SBo-builds-needing-upgrades/evolution
 
