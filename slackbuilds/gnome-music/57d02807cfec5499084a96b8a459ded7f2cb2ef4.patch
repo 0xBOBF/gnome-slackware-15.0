@@ -1,0 +1,68 @@
+From 57d02807cfec5499084a96b8a459ded7f2cb2ef4 Mon Sep 17 00:00:00 2001
+From: Carlos Garnacho <carlosg@gnome.org>
+Date: Sat, 24 Sep 2022 20:21:06 +0200
+Subject: [PATCH] storeart: Port to soup 3.x
+
+Update to libsoup 3.x API to fetch artist art.
+---
+ gnomemusic/storeart.py | 19 ++++++++++---------
+ meson.build            |  2 +-
+ 2 files changed, 11 insertions(+), 10 deletions(-)
+
+diff --git a/gnomemusic/storeart.py b/gnomemusic/storeart.py
+index fe292f69f..ffee7abda 100644
+--- a/gnomemusic/storeart.py
++++ b/gnomemusic/storeart.py
+@@ -23,7 +23,7 @@
+ # delete this exception statement from your version.
+ 
+ import gi
+-gi.require_versions({"MediaArt": "2.0", "Soup": "2.4"})
++gi.require_versions({"MediaArt": "2.0", "Soup": "3.0"})
+ from gi.repository import Gio, GLib, GObject, MediaArt, Soup, GdkPixbuf
+ 
+ from gnomemusic.musiclogger import MusicLogger
+@@ -99,18 +99,19 @@ class StoreArt(GObject.Object):
+                 return
+ 
+         msg = Soup.Message.new("GET", uri)
+-        self._soup_session.queue_message(msg, self._read_callback, None)
++        self._soup_session.send_and_read_async(
++            msg, GLib.PRIORITY_DEFAULT, None, self._read_callback)
+ 
+-    def _read_callback(self, src, result, data):
+-        if result.props.status_code != 200:
++    def _read_callback(
++            self, session: Soup.Session, result: Gio.AsyncResult) -> None:
++        try:
++            bytes = session.send_and_read_finish(result)
++        except GLib.Error as error:
+             self._log.debug(
+-                "Failed to get remote art: {}".format(
+-                    result.props.reason_phrase))
++                f"Failed to get remote art: {error.domain}, {error.message}")
+             self.emit("finished")
+-            return
+ 
+-        istream = Gio.MemoryInputStream.new_from_bytes(
+-            result.props.response_body_data)
++        istream = Gio.MemoryInputStream.new_from_bytes(bytes)
+         GdkPixbuf.Pixbuf.new_from_stream_async(
+             istream, None, self._pixbuf_from_stream_finished)
+ 
+diff --git a/meson.build b/meson.build
+index 02cbbb2b3..5814b3c44 100644
+--- a/meson.build
++++ b/meson.build
+@@ -60,7 +60,7 @@ dependency('gobject-introspection-1.0', version: '>= 1.35.0')
+ dependency('gtk4', version: '>= 4.5.0')
+ dependency('libadwaita-1', version: '>= 1.2.alpha')
+ dependency('libmediaart-2.0', version: '>= 1.9.1')
+-dependency('libsoup-2.4')
++dependency('libsoup-3.0')
+ dependency('tracker-sparql-3.0', version: '>= 2.99.3')
+ dependency('pango', version: '>= 1.44.0')
+ dependency('pygobject-3.0', version: '>= 3.36.1')
+-- 
+GitLab
+
