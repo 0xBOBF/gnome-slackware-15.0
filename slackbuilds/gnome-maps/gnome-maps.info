@@ -5,6 +5,6 @@ DOWNLOAD="https://download.gnome.org/sources/gnome-maps/43/gnome-maps-43.7.tar.x
 MD5SUM="2053952750566d34ea713675312c9709"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="folks libhandy libchamplain libshumate sysprof"
+REQUIRES="libhandy libchamplain libshumate sysprof"
 MAINTAINER="Bob Funk"
 EMAIL="bobfunk11@gmail.com"
