@@ -10,11 +10,12 @@
 
 # GNOME Settings Daemon and deps:
 libgusb
+libsoup3
 colord
 gnome-desktop
-geocode-glib
+geocode-glib2
 geoclue2
-libgweather
+libgweather4
 gnome-settings-daemon
 
 # Mutter Compositor:
@@ -24,21 +25,26 @@ mutter
 colord-gtk
 gnome-bluetooth
 gsound
+python-smartypants
+python3-typogrify
+python3-toml
+gi-docgen
 libhandy
 xdg-dbus-proxy
 libwpe
 wpebackend-fdo
 bubblewrap
 unifdef
-webkit2gtk
+webkit2gtk4.1
 rest
 gnome-online-accounts
 cups-pk-helper
+gnome-color-manager
+xdg-desktop-portal-gnome
+libgnomekbd
 gnome-control-center
 
 # GNOME Shell and deps:
-libgdata
-libgweather4
 evolution-data-server
 gnome-autoar
 adobe-source-code-pro-font
@@ -63,9 +69,9 @@ gnome-menus
 gnome-shell-extensions
 
 # gnome-browser-connector and deps:
-jq
-p7zip
 gnome-browser-connector
+
+# gnome-backgrounds:
 gnome-backgrounds
 
 # LibAppIndicator GNOME Shell extension:

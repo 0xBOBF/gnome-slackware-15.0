@@ -11,11 +11,12 @@
 
 # GNOME Settings Daemon and deps:
 libgusb
+libsoup3
 colord
 gnome-desktop
-geocode-glib
+geocode-glib2
 geoclue2
-libgweather
+libgweather4
 gnome-settings-daemon
 
 # Mutter compositor:
@@ -36,14 +37,18 @@ cheese
 colord-gtk
 gnome-bluetooth
 gsound
+python-smartypants
+python3-typogrify
+python3-toml
+gi-docgen
 libhandy
 xdg-dbus-proxy
 libwpe
 wpebackend-fdo
 bubblewrap
 unifdef
-webkit2gtk
-rest-legacy
+webkit2gtk4.1
+rest
 gnome-online-accounts
 cups-pk-helper
 gnome-color-manager
@@ -52,8 +57,6 @@ libgnomekbd
 gnome-control-center
 
 # GNOME Shell and deps:
-libgdata
-libgweather4
 evolution-data-server
 gnome-autoar
 adobe-source-code-pro-font
@@ -137,9 +140,12 @@ gnome-terminal
 gnome-system-monitor
 
 # GNOME Weather (Also provides weather in the panel menu):
+libadwaita
 gnome-weather
 
 # GNOME Clocks:
+geocode-glib
+libgweather
 gnome-clocks
 
 # GNOME Disks:
@@ -156,7 +162,7 @@ libdazzle
 gnome-calendar
 
 # GNOME Calculator:
-gtksourceview4
+gtksourceview5
 gnome-calculator
 
 # gedit is an editor for GNOME:
@@ -189,12 +195,12 @@ file-roller
 
 # GNOME Maps:
 telepathy-glib
-folks
+sysprof
+libshumate
 gnome-maps
 
 # GNOME Photos:
 grilo
-gfbgraph
 gnome-photos
 
 # Seahorse GNOME Keyring manager:
@@ -217,6 +223,7 @@ gtk-vnc
 gnome-connections
 
 # GNOME Contacts:
+folks
 gnome-contacts
 
 # GNOME Music:
@@ -239,6 +246,7 @@ pyatspi
 orca
 
 # Sushi
+gtksourceview4
 sushi
 
 # GNOME User Share (runtime needs avahi)
@@ -247,7 +255,6 @@ sushi
 #gnome-user-share
 
 # Rygel and deps:
-libsoup3
 gssdp
 gupnp
 gupnp-av
@@ -257,9 +264,7 @@ rygel
 
 # Epiphany:
 # Omitting for now, due to the additional webkit build and overwritten WebDriver
-#libsoup3
-#webkit2gtk4.1
-#epiphany
+epiphany
 
 # GNOME Boxes:
 #libosinfo
