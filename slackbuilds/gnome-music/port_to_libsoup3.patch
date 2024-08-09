@@ -1,0 +1,220 @@
+diff -Naur gnome-music-41.1.orig/gnomemusic/scrobbler.py gnome-music-41.1/gnomemusic/scrobbler.py
+--- gnome-music-41.1.orig/gnomemusic/scrobbler.py	2024-08-08 15:59:21.978990761 -0000
++++ gnome-music-41.1/gnomemusic/scrobbler.py	2024-08-08 16:30:37.450729765 -0000
+@@ -22,12 +22,13 @@
+ # code, but you are not obligated to do so.  If you do not wish to do so,
+ # delete this exception statement from your version.
+ 
++from typing import Dict, Optional, Union, cast
+ from enum import IntEnum
+ from hashlib import md5
+ 
+ import gi
+ gi.require_version('Goa', '1.0')
+-gi.require_version('Soup', '2.4')
++gi.require_version('Soup', '3.0')
+ from gi.repository import Gio, GLib, Goa, GObject, Soup
+ 
+ from gnomemusic.musiclogger import MusicLogger
+@@ -404,13 +405,24 @@
+             "api_sig": api_sig
+         })
+ 
+-        msg = Soup.form_request_new_from_hash(
+-            "POST", "https://ws.audioscrobbler.com/2.0/", request_dict)
+-        self._soup_session.queue_message(
+-            msg, self._lastfm_api_callback, request_type_key)
++        msg = Soup.Message.new_from_encoded_form(
++            "POST", "https://ws.audioscrobbler.com/2.0/",
++            Soup.form_encode_hash(request_dict))
++        data = {
++            "msg": msg,
++            "request_type_key": request_type_key,
++        }
++        self._soup_session.send_async(
++            msg, GLib.PRIORITY_DEFAULT, None, self._lastfm_api_callback, data)
++
++    def _lastfm_api_callback(
++            self, session: Soup.Session,
++            result: Gio.AsyncResult,
++            data: Dict[str, Union[str, Soup.Message]]) -> None:
++        """Internal callback method called by queue_message"""
++        msg = cast(Soup.Message, data["msg"])
++        request_type_key = cast(str, data["request_type_key"])
+ 
+-    def _lastfm_api_callback(self, session, msg, request_type_key):
+-        """Internall callback method called by queue_message"""
+         status_code = msg.props.status_code
+         if status_code != 200:
+             self._log.debug("Failed to {} track {} : {}".format(
+diff -Naur gnome-music-41.1.orig/gnomemusic/storeart.py gnome-music-41.1/gnomemusic/storeart.py
+--- gnome-music-41.1.orig/gnomemusic/storeart.py	2024-08-08 15:59:21.978990761 -0000
++++ gnome-music-41.1/gnomemusic/storeart.py	2024-08-08 16:00:13.108983221 -0000
+@@ -23,7 +23,7 @@
+ # delete this exception statement from your version.
+ 
+ import gi
+-gi.require_versions({"MediaArt": "2.0", "Soup": "2.4"})
++gi.require_versions({"MediaArt": "2.0", "Soup": "3.0"})
+ from gi.repository import Gio, GLib, GObject, MediaArt, Soup, GdkPixbuf
+ 
+ from gnomemusic.musiclogger import MusicLogger
+@@ -99,18 +99,19 @@
+                 return
+ 
+         msg = Soup.Message.new("GET", uri)
+-        self._soup_session.queue_message(msg, self._read_callback, None)
++        self._soup_session.send_and_read_async(
++            msg, GLib.PRIORITY_DEFAULT, None, self._read_callback)
+ 
+-    def _read_callback(self, src, result, data):
+-        if result.props.status_code != 200:
++    def _read_callback(
++            self, session: Soup.Session, result: Gio.AsyncResult) -> None:
++        try:
++            bytes = session.send_and_read_finish(result)
++        except GLib.Error as error:
+             self._log.debug(
+-                "Failed to get remote art: {}".format(
+-                    result.props.reason_phrase))
++                f"Failed to get remote art: {error.domain}, {error.message}")
+             self.emit("finished")
+-            return
+ 
+-        istream = Gio.MemoryInputStream.new_from_bytes(
+-            result.props.response_body_data)
++        istream = Gio.MemoryInputStream.new_from_bytes(bytes)
+         GdkPixbuf.Pixbuf.new_from_stream_async(
+             istream, None, self._pixbuf_from_stream_finished)
+ 
+diff -Naur gnome-music-41.1.orig/meson.build gnome-music-41.1/meson.build
+--- gnome-music-41.1.orig/meson.build	2024-08-08 15:59:21.991990759 -0000
++++ gnome-music-41.1/meson.build	2024-08-08 16:00:13.108983221 -0000
+@@ -48,7 +48,7 @@
+ dependency('libhandy-1', version: '>= 1.2.0')
+ dependency('libdazzle-1.0', version: '>= 3.28.0')
+ dependency('libmediaart-2.0', version: '>= 1.9.1')
+-dependency('libsoup-2.4')
++dependency('libsoup-3.0')
+ dependency('tracker-sparql-3.0', version: '>= 2.99.3')
+ dependency('pango', version: '>= 1.44.0')
+ dependency('pygobject-3.0', version: '>= 3.36.1')
+diff -Naur gnome-music-41.1.orig/meson.build.orig gnome-music-41.1/meson.build.orig
+--- gnome-music-41.1.orig/meson.build.orig	1970-01-01 00:00:00.000000000 -0000
++++ gnome-music-41.1/meson.build.orig	2022-04-25 09:18:06.000000000 -0000
+@@ -0,0 +1,115 @@
++project('gnome-music',
++    version: '41.1',
++    meson_version: '>= 0.49.0'
++)
++
++# Importing modules
++gnome = import('gnome')
++i18n  = import('i18n')
++python = import('python')
++
++# Module objects
++py_installation = python.find_installation('python3')
++
++# Make sure Python is installed and found
++if not py_installation.found()
++    error('No valid python3 binary found')
++endif
++
++# Python 3.7 is needed for postponed evalution of annotations
++if not py_installation.language_version().version_compare('>= 3.7')
++  error('Python 3.7 or newer is required.')
++endif
++
++# Constants
++PACKAGE_URL = 'https://wiki.gnome.org/Apps/Music'
++PACKAGE_URL_BUG = 'https://gitlab.gnome.org/GNOME/gnome-music/issues'
++PROJECT_RDNN_NAME = 'org.gnome.Music'
++
++# NAME_SUFFIX is used in the about dialog
++if get_option('profile') == 'development'
++  PROFILE = '.Devel'
++  NAME_SUFFIX = ' (Development Snapshot)'
++else
++  PROFILE = ''
++  NAME_SUFFIX = ''
++endif
++
++APPLICATION_ID = 'org.gnome.Music@0@'.format(PROFILE)
++PYTHON_DIR = py_installation.get_path('purelib')
++PKGDATA_DIR = join_paths(get_option('prefix'), get_option('datadir'), APPLICATION_ID)
++PKGLIB_DIR = join_paths(get_option('prefix'), get_option('libdir'), APPLICATION_ID)
++
++# Dependencies
++dependency('glib-2.0', version: '>= 2.67.1')
++dependency('goa-1.0', version: '>= 3.35.90')
++dependency('gobject-introspection-1.0', version: '>= 1.35.0')
++dependency('gtk+-3.0', version: '>= 3.24.14')
++dependency('libhandy-1', version: '>= 1.2.0')
++dependency('libdazzle-1.0', version: '>= 3.28.0')
++dependency('libmediaart-2.0', version: '>= 1.9.1')
++dependency('libsoup-2.4')
++dependency('tracker-sparql-3.0', version: '>= 2.99.3')
++dependency('pango', version: '>= 1.44.0')
++dependency('pygobject-3.0', version: '>= 3.36.1')
++dependency('py3cairo', version: '>= 1.14.0')
++dependency('grilo-0.3', version: '>= 0.3.13', fallback: ['grilo', 'libgrl_dep'])
++dependency('grilo-plugins-0.3', version: '>= 0.3.12', fallback: ['grilo-plugins', 'grilo_plugins_dep'])
++
++subproject('gfm',
++    default_options: [
++        'pkgdatadir=' + PKGDATA_DIR,
++        'pkglibdir=' + PKGLIB_DIR
++    ])
++
++subdir('data/ui')
++subdir('data')
++subdir('help')
++subdir('po')
++
++install_subdir(
++    'gnomemusic',
++    install_dir: py_installation.get_install_dir()
++)
++
++# Install the executable file
++bin_config = configuration_data()
++bin_config.set('application_id', APPLICATION_ID)
++bin_config.set('rdnn_name', PROJECT_RDNN_NAME)
++bin_config.set('pkgdatadir', PKGDATA_DIR)
++bin_config.set('localedir', join_paths(get_option('prefix'), get_option('datadir'), 'locale'))
++bin_config.set('pythondir', PYTHON_DIR)
++bin_config.set('schemasdir', PKGDATA_DIR)
++# Used for gfm
++bin_config.set('gfmlibdir', PKGLIB_DIR)
++
++bin_config.set('local_build', 'False')
++
++configure_file(
++    input: 'gnome-music.in',
++    output: 'gnome-music',
++    configuration: bin_config,
++    install_dir: get_option('bindir')
++)
++
++# Install the builddir executable
++local_config = configuration_data()
++local_config.set('application_id', APPLICATION_ID)
++local_config.set('rdnn_name', PROJECT_RDNN_NAME)
++local_config.set('pkgdatadir', join_paths(meson.build_root(), 'data'))
++local_config.set('localedir', join_paths(get_option('prefix'), get_option('datadir'), 'locale'))
++local_config.set('pythondir', meson.source_root())
++local_config.set('schemasdir', join_paths(meson.build_root(), 'data'))
++# Used for gfm
++local_config.set('gfmlibdir', join_paths(meson.build_root(), 'subprojects', 'gfm'))
++
++local_config.set('local_build', 'True')
++
++configure_file(
++    input: 'gnome-music.in',
++    output: 'local-music',
++    configuration: local_config
++)
++
++meson.add_postconf_script('meson_post_conf.py')
++meson.add_install_script('meson_post_install.py')

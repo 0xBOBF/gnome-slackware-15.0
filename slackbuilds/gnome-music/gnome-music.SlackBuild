@@ -77,7 +77,8 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # Patch from upstream to remove dependency on libsoup2:
-patch -Np1 -i $CWD/57d02807cfec5499084a96b8a459ded7f2cb2ef4.patch
+#patch -Np1 -i $CWD/57d02807cfec5499084a96b8a459ded7f2cb2ef4.patch
+patch -Np1 -i $CWD/port_to_libsoup3.patch
 
 mkdir build
 cd build
