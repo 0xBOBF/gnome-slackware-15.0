@@ -1,6 +1,6 @@
 diff -Naur gnome-shell-41.9.orig/js/portalHelper/main.js gnome-shell-41.9/js/portalHelper/main.js
---- gnome-shell-41.9.orig/js/portalHelper/main.js	2024-08-07 00:35:01.340492292 -0000
-+++ gnome-shell-41.9/js/portalHelper/main.js	2024-08-07 00:35:22.563489661 -0000
+--- gnome-shell-41.9.orig/js/portalHelper/main.js	2024-08-08 15:51:02.427590989 -0000
++++ gnome-shell-41.9/js/portalHelper/main.js	2024-08-08 15:51:35.589597471 -0000
 @@ -1,7 +1,7 @@
  /* exported main */
  imports.gi.versions.Pango = '1.0';
@@ -10,9 +10,56 @@ diff -Naur gnome-shell-41.9.orig/js/portalHelper/main.js gnome-shell-41.9/js/por
  
  const Format = imports.format;
  const Gettext = imports.gettext;
+diff -Naur gnome-shell-41.9.orig/js/ui/dateMenu.js gnome-shell-41.9/js/ui/dateMenu.js
+--- gnome-shell-41.9.orig/js/ui/dateMenu.js	2024-08-08 15:51:02.428590990 -0000
++++ gnome-shell-41.9/js/ui/dateMenu.js	2024-08-08 15:55:03.411605407 -0000
+@@ -339,9 +339,13 @@
+                 this._locations.push({ location: l });
+         }
+ 
++        const unixtime = GLib.DateTime.new_now_local().to_unix();
+         this._locations.sort((a, b) => {
+-            return a.location.get_timezone().get_offset() -
+-                   b.location.get_timezone().get_offset();
++            const tzA = a.location.get_timezone();
++            const tzB = b.location.get_timezone();
++            const intA = tzA.find_interval(GLib.TimeType.STANDARD, unixtime);
++            const intB = tzA.find_interval(GLib.TimeType.STANDARD, unixtime);
++            return tzA.get_offset(intA) - tzB.get_offset(intB);
+         });
+ 
+         let layout = this._grid.layout_manager;
+@@ -415,8 +419,9 @@
+     }
+ 
+     _getTimezoneOffsetAtLocation(location) {
++        const tz = location.get_timezone();
+         const localOffset = GLib.DateTime.new_now_local().get_utc_offset();
+-        const utcOffset = this._getTimeAtLocation(location).get_utc_offset();
++        const utcOffset = GLib.DateTime.new_now(tz).get_utc_offset();
+         const offsetCurrentTz = utcOffset - localOffset;
+         const offsetHours =
+             Math.floor(Math.abs(offsetCurrentTz) / GLib.TIME_SPAN_HOUR);
+@@ -431,15 +436,10 @@
+         return text;
+     }
+ 
+-    _getTimeAtLocation(location) {
+-        let tz = GLib.TimeZone.new(location.get_timezone().get_tzid());
+-        return GLib.DateTime.new_now(tz);
+-    }
+-
+     _updateTimeLabels() {
+         for (let i = 0; i < this._locations.length; i++) {
+             let l = this._locations[i];
+-            let now = this._getTimeAtLocation(l.location);
++            const now = GLib.DateTime.new_now(l.location.get_timezone());
+             l.timeLabel.text = Util.formatTime(now, { timeOnly: true });
+         }
+     }
 diff -Naur gnome-shell-41.9.orig/js/ui/environment.js gnome-shell-41.9/js/ui/environment.js
---- gnome-shell-41.9.orig/js/ui/environment.js	2024-08-07 00:35:01.342492292 -0000
-+++ gnome-shell-41.9/js/ui/environment.js	2024-08-07 00:44:55.226787175 -0000
+--- gnome-shell-41.9.orig/js/ui/environment.js	2024-08-08 15:51:02.428590990 -0000
++++ gnome-shell-41.9/js/ui/environment.js	2024-08-08 15:51:35.590597471 -0000
 @@ -19,7 +19,7 @@
  imports.gi.versions.GnomeDesktop = '3.0';
  imports.gi.versions.Graphene = '1.0';
