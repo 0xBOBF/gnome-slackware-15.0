@@ -36,6 +36,10 @@ cheese
 colord-gtk
 gnome-bluetooth
 gsound
+python-smartypants
+python3-typogrify
+python3-toml
+gi-docgen
 libhandy
 xdg-dbus-proxy
 libwpe
@@ -119,6 +123,8 @@ python3-trove-classifiers
 python3-pluggy
 python3-pathspec
 python3-editables
+python3-packaging-opt
+python3-setuptools-opt
 python3-hatchling
 python3-webencodings
 python3-soupsieve
@@ -178,7 +184,7 @@ evince
 # Evolution email/calendar/organizer client:
 cmark
 libpst
-lua53
+lua
 highlight
 ytnef
 libchamplain
@@ -316,7 +322,10 @@ rygel
 
 # GNOME Builder:
 #sysprof
-#sphinx_rtd_theme
+#sphinxcontrib-jquery
+#sphinx-rtd-theme
+#python-zipp
+#python-importlib_metadata
 #sphinxcontrib-serializinghtml
 #sphinxcontrib-qthelp
 #sphinxcontrib-jsmath
@@ -324,7 +333,7 @@ rygel
 #sphinxcontrib-devhelp
 #sphinxcontrib-applehelp
 #snowballstemmer
-#pytz
+#python3-pytz
 #python3-babel
 #imagesize
 #alabaster
@@ -332,9 +341,5 @@ rygel
 #libgit2
 #libgit2-glib
 #template-glib
-#python-smartypants
-#python3-typogrify
-#python-toml
-#gi-docgen
 #jsonrpc-glib
 #gnome-builder

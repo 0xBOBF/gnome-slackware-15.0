@@ -24,6 +24,9 @@ mutter
 colord-gtk
 gnome-bluetooth
 gsound
+python-smartypants
+python3-typogrify
+python3-toml
 libhandy
 xdg-dbus-proxy
 libwpe
@@ -31,9 +34,12 @@ wpebackend-fdo
 bubblewrap
 unifdef
 webkit2gtk
-rest
+rest-legacy
 gnome-online-accounts
 cups-pk-helper
+gnome-color-manager
+xdg-desktop-portal-gnome
+libgnomekbd
 gnome-control-center
 
 # GNOME Shell and deps:
@@ -63,11 +69,9 @@ gnome-menus
 gnome-shell-extensions
 
 # gnome-browser-connector and deps:
-jq
-p7zip
 gnome-browser-connector
 gnome-backgrounds
 
 # LibAppIndicator GNOME Shell extension:
-gnome-shell-extension-appindicator
+# gnome-shell-extension-appindicator
 
