@@ -1,5 +1,4 @@
 # GNOME for Slackware 15.0
-## Warning: As of September 12, 2026, the build queue for this project is broken due to slackbuilds.org changing several builds away from webkit2gtk4.0, and packages like gnome-control-center are no longer functional, while others are failing to build. These changes should be reverted in the next week update.
 
 ## Overview
 This project provides the GNOME desktop in "SlackBuild" format for use on Slackware 15.0.
